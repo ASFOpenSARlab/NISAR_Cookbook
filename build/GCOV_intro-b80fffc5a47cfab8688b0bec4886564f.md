@@ -1,14 +1,16 @@
 # An Introduction to NISAR Level-2 GCOV data
 <br/><br/>
 
-![NISAR Imaging Animation](https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4)
+```{image} https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4
+:alt: NISAR Imaging Animation
+```
 <br/>
 *NISAR Imaging Animation: https://science.nasa.gov/video-detail/amf-1a1ed0e7-59b4-4a9d-acc5-d52896620f2b/*
 
 ## What is NISAR GCOV data?
 ```{dropdown} Explain it to me like a 6th grader
 
-hfghfghhfghfghfghfghfgh
+Explanation, explaining expalaining, explaining
 ```
 
 ```{dropdown} Explain it to me like a 12th grader

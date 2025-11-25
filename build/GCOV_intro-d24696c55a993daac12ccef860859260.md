@@ -4,7 +4,7 @@
 :::{figure} ../assets/3_PAR_SARImaging.gif
 :alt: NISAR Imaging Animation
 
-*NISAR Imaging Animation: https://science.nasa.gov/video-detail/amf-1a1ed0e7-59b4-4a9d-acc5-d52896620f2b/*
+*NISAR Imaging Animation: https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4*
 :::
 
 

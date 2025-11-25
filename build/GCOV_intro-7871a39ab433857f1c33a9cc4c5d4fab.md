@@ -1,11 +1,48 @@
 # An Introduction to NISAR Level-2 GCOV data
 <br/><br/>
-
+mp4 Image directive backtics:
 ```{image} https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4
 :alt: NISAR Imaging Animation
-```
-<br/>
+
 *NISAR Imaging Animation: https://science.nasa.gov/video-detail/amf-1a1ed0e7-59b4-4a9d-acc5-d52896620f2b/*
+```
+
+<br/>
+
+mp4 figure directive backtics:
+```{figure} https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4
+:alt: NISAR Imaging Animation
+
+*NISAR Imaging Animation: https://science.nasa.gov/video-detail/amf-1a1ed0e7-59b4-4a9d-acc5-d52896620f2b/*
+```
+
+mp4 Image directive colons:
+:::{image} https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4
+:alt: NISAR Imaging Animation
+
+*NISAR Imaging Animation: https://science.nasa.gov/video-detail/amf-1a1ed0e7-59b4-4a9d-acc5-d52896620f2b/*
+:::
+
+mp4 figure directive colon:
+:::{figure} https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4
+:alt: NISAR Imaging Animation
+
+*NISAR Imaging Animation: https://science.nasa.gov/video-detail/amf-1a1ed0e7-59b4-4a9d-acc5-d52896620f2b/*
+:::
+
+Regular old MD image link:
+![](https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4)
+
+
+local gif with figure directive (colons):
+figure directive colon:
+
+:::{figure} 3_PAR_SARImaging.gif
+:alt: NISAR Imaging Animation
+
+*NISAR Imaging Animation: https://science.nasa.gov/video-detail/amf-1a1ed0e7-59b4-4a9d-acc5-d52896620f2b/*
+:::
+
 
 ## What is NISAR GCOV data?
 ```{dropdown} Explain it to me like a 6th grader

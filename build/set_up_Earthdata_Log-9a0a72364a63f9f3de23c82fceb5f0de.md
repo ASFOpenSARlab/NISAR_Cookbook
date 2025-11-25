@@ -1,1 +1,0 @@
-# Set Up an Earthdata Login Account for NISAR Data Access

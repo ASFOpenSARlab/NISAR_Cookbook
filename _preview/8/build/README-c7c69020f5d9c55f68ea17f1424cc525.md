@@ -1,4 +1,4 @@
-# NISAR GCOV Cookbook
+# NISAR L2 GCOV Cookbook
 <br>
 
 [![Jupyter Book](https://img.shields.io/badge/Open-NISAR%20GCOV%20Cookbook-brightgreen?logo=jupyter)](https://asfopensarlab.github.io/NISAR_GCOV_Cookbook/)[![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
@@ -37,7 +37,7 @@ Lewandowski, Alex. White, Julia.
 
 ## Contribute!
 
-This project is open source and developed in the open. Use, improve, and contribute to the NISAR GCOV Cookbook! See our [contributor's guide]() to learn how.
+This project is open source and open development. See the [contributor's guide](CONTRIBUTING.md) to learn how to join the project and make your first contribution.
 
 ## Structure
 

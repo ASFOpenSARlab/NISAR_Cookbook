@@ -1,7 +1,7 @@
 # An Introduction to NISAR Level-2 GCOV data
 <br/>
 
-:::{note} All possible covariance channels in quad-pol mode (linear + circular)
+:::{note} All possible covariance channels (linear + circular)
 :::{math}
 \begin{aligned}
 &\left[

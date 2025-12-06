@@ -4,6 +4,12 @@
 [![Jupyter Book](https://img.shields.io/badge/Open-NISAR%20GCOV%20Cookbook-brightgreen?logo=jupyter)](https://asfopensarlab.github.io/NISAR_GCOV_Cookbook/)[![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 
+:::{figure} assets/3_PAR_SARImaging.gif
+:alt: NISAR Imaging Animation
+
+*NISAR Imaging Animation: https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4*
+:::
+
 :::{warning} This Cookbook is pre-release and under active development
 
 As of writing (2025-12-04), NISAR L2 GCOV data are not yet available. The workflows in this Cookbook were created using proxy NISAR test data, available here:
@@ -23,7 +29,7 @@ By introducing clear, hands-on examples, we hope to make the mission’s powerfu
 
 ## Authors
 
-Lewandowski, Alex. White, Julia. (Several others will be added as we produce notebooks)
+Lewandowski, Alex. White, Julia.
 
 <a href="https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=ASFOpenSARlab/NISAR_GCOV_Cookbook" />

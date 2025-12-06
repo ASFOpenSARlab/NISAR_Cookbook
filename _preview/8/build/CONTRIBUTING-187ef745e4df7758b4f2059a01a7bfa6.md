@@ -4,7 +4,7 @@
 We welcome contributions of all kinds! If you spot a bug, please [raise an issue here](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues). We encourage Pull Requests to address bugs or add new features and data recipes.
 <br>
 
-Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+Please read our [Code of Conduct](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/CODE_OF_CONDUCT.md) before contributing.
 
 This project uses the standard **fork → branch → pull request** workflow.
 

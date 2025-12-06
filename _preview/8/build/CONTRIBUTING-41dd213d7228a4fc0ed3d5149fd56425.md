@@ -1,13 +1,13 @@
-# Contributor's Guide
+# NISAR GCOV Cookbook Contributor's Guide
 <br>
 
-We welcome contributions of all kinds. If you spot a bug, please [raise an issue here](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues). We encourage Pull Requests to address issues or add new features and data recipes.
+We welcome contributions of all kinds. If you spot a bug, please [raise an issue here](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues). We encourage Pull Requests to address bugs or add new features and data recipes.
 <br>
 
 This project uses the standard **fork → branch → pull request** workflow.
 
-## 1. View current issues and engage in discussions
-See if the issue or feature you plan to work on is already under discussion or, if it's not, start a discussion by raising an [issue](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues).
+## 1. View current [issues](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues) and engage in discussions
+See if the bug or feature you plan to work on is already under discussion or, if it's not, start a discussion by raising an [issue](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues).
 
 ## 2. Fork the repository
 Click the **Fork** button at the top-right of the [NISAR_GCOV_Cookbook GitHub page](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook) to create your own copy of the repo.

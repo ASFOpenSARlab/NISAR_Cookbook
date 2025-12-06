@@ -52,14 +52,19 @@ As you develop notebooks and documentation, please verify that your Markdown ren
 
 To maintain a consistent format for the Jupyter Book, we have provided a [Notebook template](notebooks/notebook-template.ipynb) that we encourage you to use a starting point.
 
-## 9. Add and commit your changes
+## 9. Add any new dependencies to a new or existing Pixi environment
+If you add dependencies, you will need to [add them to an existing or new Pixi environment](https://rse-guidelines.readthedocs.io/en/latest/fundamentals/computing-development-environments/pixi/#:~:text=packages%20go%20here-,3.%20Adding%20Dependencies,-Add%20conda%20packages).
+
+Adds steps to install any new enviornments to the [software environment installation notebook](create_software_environment.ipynb).
+
+## 10. Add and commit your changes
 Commit in small, focused steps.
 ```bash
 git add path/to/file1 path/to/file2
 git commit -m "Describe your change"
 ```
 
-## 10. Keep your branch up to date with the upstream cookbook
+## 11. Keep your branch up to date with the upstream cookbook
 ```bash
 git fetch upstream
 git merge upstream/main
@@ -67,12 +72,12 @@ git merge upstream/main
 git rebase upstream/main
 ```
 
-## 11. Push your branch
+## 12. Push your branch
 ```bash
 git push origin feature/my-change
 ```
 
-## 12. Open a Pull Request
+## 13. Open a Pull Request
 Go to your fork on GitHub and click **Compare & pull request**.
 
 Please include a detailed description of your updates and the motivation behind them.

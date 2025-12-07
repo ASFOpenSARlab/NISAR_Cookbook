@@ -8,7 +8,7 @@
     <loc>http://localhost:3000/notebooks/gcov-intro</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/create-software-environment</loc>
+    <loc>http://localhost:3000/notebooks/software-environment-docker</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/set-up-earthdata-login</loc>
@@ -36,5 +36,8 @@
   </url>
   <url>
     <loc>http://localhost:3000/contributing</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/notebook-template</loc>
   </url>
 </urlset>

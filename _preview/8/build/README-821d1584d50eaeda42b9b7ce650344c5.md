@@ -44,7 +44,7 @@ This project is open source and open development. See the [contributor's guide](
 ### Section 1: About NISAR GCOV Data
 Learn about NISAR GCOV data, its HDF5 structure, and its applications.
 
-### Section 2: Tutorial Set Up
+### Section 2: Cookbook Set Up
 Gain access to the data and set up required software environments for the included workflows.
 
 ### Section 3: Data Access

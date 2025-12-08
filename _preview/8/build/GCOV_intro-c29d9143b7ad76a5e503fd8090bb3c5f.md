@@ -1,7 +1,7 @@
 # An Introduction to NISAR Level-2 GCOV data
 <br/>
 
-:::{note} All possible covariance channels (linear + circular)
+:::{note} All possible covariance channels: linear (H/V) + circular/linear (RH/RV) polarizations
 :::{math}
 \begin{aligned}
 &\left[
@@ -50,10 +50,6 @@
 \end{array}
 \right]
 &
-\begin{array}{l}
-\text{Linear Transmit and Receive (H/V)} \\[48pt]
-\text{Right-hand Circular Transmit, Linear Receive (RH/RV)}
-\end{array}
 \end{aligned}
 \\[12pt]
 \textcolor{black}{\text{Black}}:\ \text{Included off-diagonal covariance terms}\\
@@ -63,68 +59,27 @@
 
 
 ## What is NISAR GCOV data?
-```{dropdown} Explain it to me like a 6th grader
 
-Explanation, explaining expalaining, explaining
-```
+:::{dropdown} Explain to me like a scientist who is new to SAR
 
-```{dropdown} Explain it to me like a 12th grader
+Coming soon
+:::
 
-sfghdtghjdfgbdfjkryjasdv
-```
+:::{dropdown} Explain it to me like an experienced SAR scientist
 
-```{dropdown} Explain to me like a scientist who is new to SAR
-
-dsfgfdghdghjdfgbdghjd
-```
-
-```{dropdown} Explain it to me like an experienced SAR scientist
-
-fgjfghjfhjdftjfghjfghj
-```
+Coming soon
+:::
 
 <hr/>
 
 ## What are the applications for GCOV data?
-```{dropdown} Explain it to me like a 6th grader
 
-hfghfghhfghfghfghfghfgh
-```
+:::{dropdown} Explain to me like a scientist who is new to SAR
 
-```{dropdown} Explain it to me like a 12th grader
+Coming soon
+:::
 
-sfghdtghjdfgbdfjkryjasdv
-```
+:::{dropdown} Explain it to me like an experienced SAR scientist
 
-```{dropdown} Explain to me like a scientist who is new to SAR
-
-dsfgfdghdghjdfgbdghjd
-```
-
-```{dropdown} Explain it to me like an experienced SAR scientist
-
-fgjfghjfhjdftjfghjfghj
-```
-
-<hr/>
-
-## What data layers are included with a GCOV product?
-```{dropdown} Explain it to me like a 6th grader
-
-hfghfghhfghfghfghfghfgh
-```
-
-```{dropdown} Explain it to me like a 12th grader
-
-sfghdtghjdfgbdfjkryjasdv
-```
-
-```{dropdown} Explain to me like a scientist who is new to SAR
-
-dsfgfdghdghjdfgbdghjd
-```
-
-```{dropdown} Explain it to me like an experienced SAR scientist
-
-fgjfghjfhjdftjfghjfghj
-```
+Coming soon
+:::

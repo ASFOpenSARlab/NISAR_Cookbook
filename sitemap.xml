@@ -8,13 +8,16 @@
     <loc>http://localhost:3000/notebooks/gcov-intro</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/create-software-environment</loc>
+    <loc>http://localhost:3000/notebooks/software-environment-docker</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/set-up-earthdata-login</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/search-nisar-gcov-data</loc>
+    <loc>http://localhost:3000/notebooks/search-nisar-gcov-asf-search</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/search-nisar-gcov-earthaccess</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/load-subset-reproject-isce3</loc>
@@ -27,5 +30,14 @@
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/nisar-gcov-sarchangedetectionmethods</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/polsar</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/contributing</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/notebook-template</loc>
   </url>
 </urlset>

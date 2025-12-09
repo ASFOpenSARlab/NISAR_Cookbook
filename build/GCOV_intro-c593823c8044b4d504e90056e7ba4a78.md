@@ -1,53 +1,82 @@
 # An Introduction to NISAR Level-2 GCOV data
 <br/>
 
-:::{figure} ../assets/3_PAR_SARImaging.gif
-:alt: NISAR Imaging Animation
-
-*NISAR Imaging Animation: https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4*
+:::{note} All possible covariance channels: linear (H/V) + circular/linear (RH/RV) polarizations
+:::{math}
+\begin{aligned}
+&\left[
+\begin{array}{cccc|cc}
+\color{green}\langle HH\,HH^* \rangle
+  & \langle HH\,HV^* \rangle
+  & \langle HH\,VH^* \rangle
+  & \langle HH\,VV^* \rangle
+  &
+  &
+\\[6pt]
+{\color{lightgray}\langle HV\,HH^* \rangle}
+  & \color{green}\langle HV\,HV^* \rangle
+  & \langle HV\,VH^* \rangle
+  & \langle HV\,VV^* \rangle
+  &
+  &
+\\[6pt]
+{\color{lightgray}\langle VH\,HH^* \rangle}
+  & {\color{lightgray}\langle VH\,HV^* \rangle}
+  & \color{green}\langle VH\,VH^* \rangle
+  & \langle VH\,VV^* \rangle
+  &
+  &
+\\[6pt]
+{\color{lightgray}\langle VV\,HH^* \rangle}
+  & {\color{lightgray}\langle VV\,HV^* \rangle}
+  & {\color{lightgray}\langle VV\,VH^* \rangle}
+  & \color{green}\langle VV\,VV^* \rangle
+  &
+  &
+\\ \hline
+&
+&
+&
+&
+\color{green}\langle RH\,RH^* \rangle
+  & \langle RH\,RV^* \rangle
+\\[6pt]
+&
+&
+&
+&
+{\color{lightgray}\langle RV\,RH^* \rangle}
+  & \color{green}\langle RV\,RV^* \rangle
+\end{array}
+\right]
+&
+\end{aligned}
+\\[12pt]
+\textcolor{black}{\text{Black}}:\ \text{Included off-diagonal covariance terms}\\
+\textcolor{green}{\text{Green}}:\ \text{Included diagonal terms (backscatter)}\\
+\textcolor{lightgray}{\text{Light gray}}:\ \text{Conjugate off-diagonal terms (not included)}
 :::
 
 
 ## What is NISAR GCOV data?
-```{dropdown} Explain it to me like a 6th grader
 
-Explanation, explaining expalaining, explaining
-```
-
-```{dropdown} Explain it to me like a 12th grader
-
-sfghdtghjdfgbdfjkryjasdv
-```
-
-```{dropdown} Explain to me like a scientist who is new to SAR
+:::{dropdown} Explain to me like a scientist who is new to SAR
 
 GCOV is one of NISAR’s data science products. GCOV takes radar signals collected from NISAR and process them into images that are: 
 - **<span title="Data is placed onto a map using latitude/longitude, or another coordinate system, so each pixel matches a real location on Earth.">Geocoded</span>**, meaning they are assigned to their corresponding place on the Earth.
 - **<span title="Data is adjusted using elevation data so hills, mountains, and valleys do not distort where features appear in the image.">Terrain corrected</span>**, meaning mountains, hills, and other slopes will not distort the radar data.
+:::
 
-```
-
-```{dropdown} Explain it to me like an experienced SAR scientist
+:::{dropdown} Explain it to me like an experienced SAR scientist
 
 GCOV is one of NISAR’s main Level-2 products. GCOV data are **<span title="Data is adjusted using elevation data to correct geometric and radiometric effects from topography.">radiometrically terrain-corrected (RTC)</span>** and **<span title="Data is placed onto a map using latitude/longitude, or another coordinate system, so each pixel matches a real location on Earth.">geocoded</span>**. Through RTC and a fixed map projection, GCOV removes topographic radiometric distortions and places all layers onto a consistent geographic grid.
-
-
-```
+:::
 
 <hr/>
 
 ## What are the applications for GCOV data?
-```{dropdown} Explain it to me like a 6th grader
 
-hfghfghhfghfghfghfghfgh
-```
-
-```{dropdown} Explain it to me like a 12th grader
-
-sfghdtghjdfgbdfjkryjasdv
-```
-
-```{dropdown} Explain to me like a scientist who is new to SAR
+:::{dropdown} Explain to me like a scientist who is new to SAR
 
 GCOV is useful because it removes many of the complexities that create challenges in a radar analysis. Given that GCOV data  is already corrected for terrain and mapped to a coordinate system, one can immediately analyze patterns on the ground without needing to correct viewing angles, slopes, or satellite geometry. It gives you consistent, ready-to-use data across space and time.
 
@@ -65,10 +94,9 @@ GCOV is useful because it removes many of the complexities that create challenge
 - General Earth surface monitoring where backscatter is needed
 
 GCOV provides reliable, consistent, analysis-ready imagery for science, mapping, and environmental monitoring.
+:::
 
-```
-
-```{dropdown} Explain it to me like an experienced SAR scientist
+:::{dropdown} Explain it to me like an experienced SAR scientist
 GCOV data are **<span title="Data is adjusted using elevation data so hills, mountains, and valleys do not distort where features appear in the image.">terrain-corrected</span>** and **<span title="Data is placed onto a map using latitude/longitude, or another coordinate system, so each pixel matches a real location on Earth.">geocoded</span>**, so you can immediately analyze patterns on the ground without needing to correct viewing angles, slopes, or satellite geometry. It gives you consistent, ready-to-use data across space and time.
 
  Some of its many uses include: 
@@ -85,23 +113,13 @@ GCOV data are **<span title="Data is adjusted using elevation data so hills, mou
 - General Earth surface monitoring where backscatter is needed
 
 GCOV offers an analysis-ready representation of surface scattering behavior that avoids the complexities of RSLC-level geometry.
-
-```
+:::
 
 <hr/>
 
 ## What data layers are included with a GCOV product?
-```{dropdown} Explain it to me like a 6th grader
 
-hfghfghhfghfghfghfghfgh
-```
-
-```{dropdown} Explain it to me like a 12th grader
-
-sfghdtghjdfgbdfjkryjasdv
-```
-
-```{dropdown} Explain to me like a scientist who is new to SAR
+:::{dropdown} Explain to me like a scientist who is new to SAR
 
 A GCOV file contains:
 
@@ -114,11 +132,9 @@ A GCOV file contains:
 - Different frequency sections, depending on how the satellite was operating when the data was collected **<span title="Sections of the HDF5 file that organize data by radar frequency, keeping each band’s measurements separate.">frequency group</span>**
 
 All of this is stored in an **<span title="A scientific file format that stores many datasets and metadata together in one organized structure, like folders inside a file.">HDF5 file</span>**, which is similar to a folder that contains organized, labeled pieces of data.
+:::
 
-
-```
-
-```{dropdown} Explain it to me like an experienced SAR scientist
+:::{dropdown} Explain it to me like an experienced SAR scientist
 
 A GCOV granule includes:
 
@@ -131,13 +147,11 @@ A GCOV granule includes:
 - **<span title="Sections of the HDF5 file that organize data by radar frequency, keeping each band’s measurements separate.">Frequency-specific groups</span>** (frequencyA and/or frequencyB depending on acquisition mode)
 
 Everything is organized hierarchically within an **<span title="A scientific file format that stores many datasets and metadata together in one organized structure, like folders inside a file.">HDF5 structure</span>** with groups, datasets, and attributes.
-
-
-```
-
+:::
 
 ## What's Next?
-```{dropdown} ASF Notebooks
+
+:::{dropdown} ASF Notebooks
 
 These notebooks offer systematic, step-by-step guidance for:
 
@@ -150,3 +164,4 @@ These notebooks offer systematic, step-by-step guidance for:
 - Plotting geocoded data
 
 - Connecting GCOV to science questions
+:::

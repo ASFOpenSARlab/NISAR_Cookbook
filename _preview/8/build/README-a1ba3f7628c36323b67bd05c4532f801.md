@@ -59,6 +59,12 @@ Notebooks focusing on NISAR GCOV backscatter channels.
 ### Section 4: PolSAR Tutorials
 Notebooks focusing on NISAR GCOV covariance channels.
 
+### Section 5: Additional NISAR Resources
+Links to additional NISAR and NISAR GCOV resources.
+
+### Section 6: Contibute to the NISAR GCOV Cookbook
+We welcome contributions! Learn how to raise issues, make updates, and add content to this cookbook.
+
 ## Running the Notebooks
 
 You can run the notebooks on a Jupyter Hub such as [OpenSARLab](https://opensciencelab.asf.alaska.edu/) or on your local machine.

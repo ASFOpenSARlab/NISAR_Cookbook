@@ -65,11 +65,21 @@
 GCOV is one of NISAR’s data science products. GCOV takes radar signals collected from NISAR and process them into images that are: 
 - **<span title="Data is placed onto a map using latitude/longitude, or another coordinate system, so each pixel matches a real location on Earth.">Geocoded</span>**, meaning they are assigned to their corresponding place on the Earth.
 - **<span title="Data is adjusted using elevation data so hills, mountains, and valleys do not distort where features appear in the image.">Terrain corrected</span>**, meaning mountains, hills, and other slopes will not distort the radar data.
+
+GCOV data also includes additional layers called **off-diagonal covariance channels**, which describe how different radar channels interact with each other. These layers can provide useful information about surface structure, vegetation, snow, water, and other features.
+
+GCOV can contain radar data acquired in different polarization modes, including **horizontal/vertical** (H/V, available in L-band) and, in some cases, **circular** (RH/RV, available in S-band only). Different modes can be utilized to help capture different aspects of how the Earth reflects radar energy.
+
+
 :::
 
 :::{dropdown} Explain it to me like an experienced SAR scientist
 
 GCOV is one of NISAR’s main Level-2 products. GCOV data are **<span title="Data is adjusted using elevation data to correct geometric and radiometric effects from topography.">radiometrically terrain-corrected (RTC)</span>** and **<span title="Data is placed onto a map using latitude/longitude, or another coordinate system, so each pixel matches a real location on Earth.">geocoded</span>**. Through RTC and a fixed map projection, GCOV removes topographic radiometric distortions and places all layers onto a consistent geographic grid.
+
+In addition to the diagonal covariance terms, GCOV includes **off-diagonal covariance channels**. These channels enable polarimetric decomposition, scattering characterization, and target structure analysis.
+
+GCOV supports **linear polarization** (H/V, available in L-band) and, at times, **circular polarization** (RH/RV, available in S-band only). The covariance matrix representation varies depending on the acquisition mode, with full, hybrid, or reduced sets of covariance terms stored in the **frequencyA**/**frequencyB** groups.
 :::
 
 <hr/>
@@ -80,8 +90,10 @@ GCOV is one of NISAR’s main Level-2 products. GCOV data are **<span title="Dat
 
 GCOV is useful because it removes many of the complexities that create challenges in a radar analysis. Given that GCOV data  is already corrected for terrain and mapped to a coordinate system, one can immediately analyze patterns on the ground without needing to correct viewing angles, slopes, or satellite geometry. It gives you consistent, ready-to-use data across space and time.
 
+In addition to its terrain-corrected imagery, GCOV includes extra radar layers that help scientists tell different types of surfaces apart. These additional layers, called **off-diagonal covariance channels**, can help identify whether something is rough or smooth, wet or dry, or whether the signal is coming from the surface, vegetation, or inside snow. GCOV may also include measurements collected with different polarization modes, which allow the imagery to highlight various ground features that interact with the ground in unique ways.
+
  Some of its many uses include: 
--Tracking snow, ice, and freeze–thaw patterns
+- Tracking snow, ice, and freeze–thaw patterns
 
 - Monitoring forests, vegetation, and land cover change
 
@@ -99,8 +111,24 @@ GCOV provides reliable, consistent, analysis-ready imagery for science, mapping,
 :::{dropdown} Explain it to me like an experienced SAR scientist
 GCOV data are **<span title="Data is adjusted using elevation data so hills, mountains, and valleys do not distort where features appear in the image.">terrain-corrected</span>** and **<span title="Data is placed onto a map using latitude/longitude, or another coordinate system, so each pixel matches a real location on Earth.">geocoded</span>**, so you can immediately analyze patterns on the ground without needing to correct viewing angles, slopes, or satellite geometry. It gives you consistent, ready-to-use data across space and time.
 
- Some of its many uses include: 
--Tracking snow, ice, and freeze–thaw patterns
+The presence of off-diagonal covariance channels allows GCOV data to aid polarimetric applications. These channels allow users to:
+
+- Evaluate scattering mechanisms
+
+- Assess vegetation structure and orientation
+
+- Distinguish surface vs. volume scattering
+
+- Analyze anisotropic or mixed scattering responses
+
+
+Similarly, GCOV’s support for multiple polarization modes (linear and, at times, compact-pol) enables analyses and classifications that rely on polarization diversity.
+
+
+ 
+ Some of GCOV's many uses include: 
+ 
+- Tracking snow, ice, and freeze–thaw patterns
 
 - Monitoring forests, vegetation, and land cover change
 
@@ -112,7 +140,7 @@ GCOV data are **<span title="Data is adjusted using elevation data so hills, mou
 
 - General Earth surface monitoring where backscatter is needed
 
-GCOV offers an analysis-ready representation of surface scattering behavior that avoids the complexities of RSLC-level geometry.
+GCOV offers an analysis-ready representation of surface scattering behavior that avoids the complexities of RSLC-level geometry while supporting basic mapping and advanced polarimetric techniques. 
 :::
 
 <hr/>
@@ -131,6 +159,8 @@ A GCOV file contains:
 
 - Different frequency sections, depending on how the satellite was operating when the data was collected **<span title="Sections of the HDF5 file that organize data by radar frequency, keeping each band’s measurements separate.">frequency group</span>**
 
+- Various polarization modes, commonly **horizontal/ vertical** (H/V) and, depending on location and operation settings, circular polarization (RH/RV, S-band only). 
+
 All of this is stored in an **<span title="A scientific file format that stores many datasets and metadata together in one organized structure, like folders inside a file.">HDF5 file</span>**, which is similar to a folder that contains organized, labeled pieces of data.
 :::
 
@@ -145,6 +175,8 @@ A GCOV granule includes:
 - **<span title="Additional information stored with a dataset that explains what the data is, how it was made, and how to use it correctly.">Metadata</span>** describing acquisition timing, frequencies, polarization combinations, and processing parameters
 
 - **<span title="Sections of the HDF5 file that organize data by radar frequency, keeping each band’s measurements separate.">Frequency-specific groups</span>** (frequencyA and/or frequencyB depending on acquisition mode)
+
+- **Linear** (H/V, available in L-band) or **circular** (RH/RV available in S-band only) polarization modes, depending on radar settings and location 
 
 Everything is organized hierarchically within an **<span title="A scientific file format that stores many datasets and metadata together in one organized structure, like folders inside a file.">HDF5 structure</span>** with groups, datasets, and attributes.
 :::

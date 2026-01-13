@@ -64,7 +64,7 @@
 
 GCOV is one of NISAR’s data science products. GCOV takes radar signals collected from NISAR and process them into images that are: 
 
-- **{abbr}`Geocoded (Data is placed onto a map using latitude/longitude, or another coordinate system, so each pixel matches a real location on Earth)`**, meaning they are assigned to their corresponding place on the Earth.
+- <b>{abbr}`Geocoded (Data is placed onto a map using latitude/longitude, or another coordinate system, so each pixel matches a real location on Earth)`</b>, meaning they are assigned to their corresponding place on the Earth.
 
 - **{abbr}`Terrain corrected (Meaning mountains, hills, and other slopes will not distort the radar data)`**, meaning mountains, hills, and other slopes will not distort the radar data.
 

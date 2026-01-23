@@ -8,6 +8,9 @@
     <loc>http://localhost:3000/notebooks/gcov-intro</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/hdf5-intro</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/software-environment-docker</loc>
   </url>
   <url>

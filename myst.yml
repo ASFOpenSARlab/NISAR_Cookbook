@@ -38,10 +38,10 @@ project:
         - file: notebooks/polSAR.ipynb
     - title: Additional NISAR Resources
       children:
+      - url: https://nisar-docs.asf.alaska.edu/
+        title: NISAR Data User Guide
       - url: https://science.nasa.gov/mission/nisar/
         title: NISAR Mission Website
-      - url: https://nisar-docs.asf.alaska.edu/
-        title: ASF NISAR User Guide
       - url: https://gitlab.com/nisar-science-algorithms
         title: NISAR Science Algorithms GitLab
       - url: https://isce-framework.github.io/isce3/

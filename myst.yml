@@ -23,7 +23,8 @@ project:
         - file: notebooks/set_up_Earthdata_Login.md
     - title: Data Access
       children:
-        - file: notebooks/search_NISAR_GCOV_asf_search.ipynb
+        - file: notebooks/search_download_NISAR_GCOV_asf_search.ipynb
+        - file: notebooks/search_stream_NISAR_GCOV_asf_search.ipynb
         - file: notebooks/search_NISAR_GCOV_earthaccess.ipynb
     - title: Data Loading, Manipulation, and Visualization
       children:
@@ -38,10 +39,10 @@ project:
         - file: notebooks/polSAR.ipynb
     - title: Additional NISAR Resources
       children:
+      - url: https://nisar-docs.asf.alaska.edu/
+        title: NISAR Data User Guide
       - url: https://science.nasa.gov/mission/nisar/
         title: NISAR Mission Website
-      - url: https://nisar-docs.asf.alaska.edu/
-        title: ASF NISAR User Guide
       - url: https://gitlab.com/nisar-science-algorithms
         title: NISAR Science Algorithms GitLab
       - url: https://isce-framework.github.io/isce3/

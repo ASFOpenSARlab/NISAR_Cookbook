@@ -17,7 +17,10 @@
     <loc>http://localhost:3000/notebooks/set-up-earthdata-login</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/search-nisar-gcov-asf-search</loc>
+    <loc>http://localhost:3000/notebooks/search-download-nisar-gcov-asf-search</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/search-stream-nisar-gcov-asf-search</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/search-nisar-gcov-earthaccess</loc>

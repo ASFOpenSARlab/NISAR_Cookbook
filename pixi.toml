@@ -40,4 +40,5 @@ isce3 = ["isce3"]
 
 [dependencies]
 asf_search = ">=3.2.1"
+h5netcdf = ">=1.8.1,<2"
 

@@ -23,7 +23,8 @@ project:
         - file: notebooks/set_up_Earthdata_Login.md
     - title: Data Access
       children:
-        - file: notebooks/search_NISAR_GCOV_asf_search.ipynb
+        - file: notebooks/search_download_NISAR_GCOV_asf_search.ipynb
+        - file: notebooks/search_stream_NISAR_GCOV_asf_search.ipynb
         - file: notebooks/search_NISAR_GCOV_earthaccess.ipynb
     - title: Data Loading, Manipulation, and Visualization
       children:

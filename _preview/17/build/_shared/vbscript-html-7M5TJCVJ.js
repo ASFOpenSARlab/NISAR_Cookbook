@@ -1,0 +1,1 @@
+import{c as t}from"/NISAR_GCOV_Cookbook/_preview/17/build/_shared/chunk-OZE3FFNP.js";var i=t((a,n)=>{function e(s){return{name:"VBScript in HTML",subLanguage:"xml",contains:[{begin:"<%",end:"%>",subLanguage:"vbscript"}]}}n.exports=e});export default i();

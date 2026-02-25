@@ -12,8 +12,10 @@
 
 :::{warning} This Cookbook is pre-release and under active development
 
-As of writing (2025-12-04), NISAR L2 GCOV data are not yet available. The workflows in this Cookbook were created using proxy NISAR test data, available here:
+The workflows in this Cookbook were created using proxy NISAR test data, available here:
 [https://science.nasa.gov/mission/nisar/sample-data/](https://science.nasa.gov/mission/nisar/sample-data/)
+
+Some workflows have been updated to use newly available production NISAR data, others have not.
 :::
 
 NISAR GCOV, is a Level-2 data product from the NISAR mission. GCOV, or Geocoded Polarimetric Covariance, provides calibrated, L-band radar data on a standardized grid, making it straightforward to load, analyze and explore in Python. 

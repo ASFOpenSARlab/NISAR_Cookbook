@@ -15,15 +15,15 @@ ipykernel = ">=7.1.0,<8"
 
 [feature.isce3.dependencies]
 isce3 = ">=0.24.4,<0.25"
-rioxarray = ">=0.20.0,<0.21"
-xarray = ">=2025.10.1,<2026"
+rioxarray = ">=0.22.0,<0.23"
+xarray = ">=2026.2,<2027"
 pandas = ">=2.3.3,<3"
 contextily = ">=1.6.2,<2"
 cartopy = ">=0.25.0,<0.26"
 h5py = ">=3.13.0,<4"
 numpy = ">=2.3.4,<3"
 asf_search = ">=12.0.0,<13"
-earthaccess = ">=0.14.0,<0.15"
+earthaccess = ">=0.16.0,<0.17"
 dask = ">=2025.11.0,<2026"
 matplotlib-base = ">=3.10.7,<4"
 ipympl = ">=0.9.8,<0.10"
@@ -41,4 +41,5 @@ isce3 = ["isce3"]
 [dependencies]
 asf_search = ">=3.2.1"
 h5netcdf = ">=1.8.1,<2"
+zarr = ">=3.1.5,<4"
 

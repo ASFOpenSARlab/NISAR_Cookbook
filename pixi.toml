@@ -3,7 +3,7 @@ authors = ["Alex-Lewandowski <aflewandowski@alaska.edu>"]
 channels = ["conda-forge"]
 name = "NISAR_GCOV_Cookbook"
 platforms = ["linux-64", "osx-64", "osx-arm64"]
-version = "0.1.1"
+version = "0.1.2"
 
 [feature.base.dependencies]
 python = "<3.12"
@@ -12,21 +12,18 @@ mystmd = ">=1.6.4,<2"
 jupyterlab = ">=4.4.10,<5"
 jupyterlab-myst = ">=2.4.2,<3"
 ipykernel = ">=7.1.0,<8"
-asf_search = ">=12.0.1,<13"
-h5netcdf = ">=1.8.1,<2"
-folium = ">=0.20.0,<0.21"
 
 [feature.isce3.dependencies]
 isce3 = ">=0.24.4,<0.25"
-rioxarray = ">=0.20.0,<0.21"
-xarray = ">=2025.10.1,<2026"
+rioxarray = ">=0.22.0,<0.23"
+xarray = ">=2026.2,<2027"
 pandas = ">=2.3.3,<3"
 contextily = ">=1.6.2,<2"
 cartopy = ">=0.25.0,<0.26"
 h5py = ">=3.13.0,<4"
 numpy = ">=2.3.4,<3"
-asf_search = ">=10.1.2,<11"
-earthaccess = ">=0.14.0,<0.15"
+asf_search = ">=12.0.0,<13"
+earthaccess = ">=0.16.0,<0.17"
 dask = ">=2025.11.0,<2026"
 matplotlib-base = ">=3.10.7,<4"
 ipympl = ">=0.9.8,<0.10"
@@ -36,6 +33,9 @@ jupyterlab-myst = ">=2.4.2,<3"
 mystmd = ">=1.6.4,<2"
 pip = ">=25.2,<26"
 python = "==3.13"
+h5netcdf = ">=1.8.1,<2"
+zarr = ">=3.1.5,<4"
+folium = ">=0.20.0,<0.21"
 
 [environments]
 default = ["base"]

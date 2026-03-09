@@ -26,6 +26,12 @@
     <loc>http://localhost:3000/notebooks/search-nisar-gcov-earthaccess</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/opening-hdf5-python</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/nisar-pixel-conversion</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/load-subset-reproject-isce3</loc>
   </url>
   <url>

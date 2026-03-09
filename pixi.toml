@@ -3,7 +3,7 @@ authors = ["Alex-Lewandowski <aflewandowski@alaska.edu>"]
 channels = ["conda-forge"]
 name = "NISAR_GCOV_Cookbook"
 platforms = ["linux-64", "osx-64", "osx-arm64"]
-version = "0.1.0"
+version = "0.1.1"
 
 [feature.base.dependencies]
 python = "<3.12"
@@ -12,6 +12,9 @@ mystmd = ">=1.6.4,<2"
 jupyterlab = ">=4.4.10,<5"
 jupyterlab-myst = ">=2.4.2,<3"
 ipykernel = ">=7.1.0,<8"
+asf_search = ">=12.0.1,<13"
+h5netcdf = ">=1.8.1,<2"
+folium = ">=0.20.0,<0.21"
 
 [feature.isce3.dependencies]
 isce3 = ">=0.24.4,<0.25"
@@ -37,8 +40,3 @@ python = "==3.13"
 [environments]
 default = ["base"]
 isce3 = ["isce3"]
-
-[dependencies]
-asf_search = ">=3.2.1"
-h5netcdf = ">=1.8.1,<2"
-

@@ -26,6 +26,8 @@ project:
         - file: notebooks/search_download_NISAR_GCOV_asf_search.ipynb
         - file: notebooks/search_stream_NISAR_GCOV_asf_search.ipynb
         - file: notebooks/search_NISAR_GCOV_earthaccess.ipynb
+        - file: notebooks/Opening_HDF5_Python.ipynb
+        - file: notebooks/NISAR_Pixel_Conversion.ipynb
     - title: Data Loading, Manipulation, and Visualization
       children:
         - file: notebooks/load_subset_reproject_isce3.ipynb

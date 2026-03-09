@@ -33,13 +33,12 @@ jupyterlab-myst = ">=2.4.2,<3"
 mystmd = ">=1.6.4,<2"
 pip = ">=25.2,<26"
 python = "==3.13"
+h5netcdf = ">=1.8.1,<2"
+zarr = ">=3.1.5,<4"
+folium = ">=0.20.0,<0.21"
 
 [environments]
 default = ["base"]
 isce3 = ["isce3"]
 
-[dependencies]
-asf_search = ">=3.2.1"
-h5netcdf = ">=1.8.1,<2"
-zarr = ">=3.1.5,<4"
 

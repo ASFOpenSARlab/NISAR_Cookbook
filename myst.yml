@@ -71,6 +71,6 @@ project:
 execute:
   execute_notebooks: "off"
 site:
-    template: book-theme
+  template: book-theme
   options:
     favicon: favicon.ico

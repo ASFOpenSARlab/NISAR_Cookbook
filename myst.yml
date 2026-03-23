@@ -3,20 +3,15 @@ version: 1
 extends:
   - https://raw.githubusercontent.com/ASFOpenSARlab/asf-myst-config/main/asf_myst.yml
 project:
-  title: NISAR GCOV Cookbook
-  github: https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook
+  title: NISAR Cookbook
+  github: https://github.com/ASFOpenSARlab/NISAR_Cookbook
   authors:
     - name: The Alaska Satellite Facility
   license: BSD-3-Clause
   copyright: '2025'
   toc:
     - file: README.md
-    - title: About NISAR GCOV data
-      children:
-      - file: notebooks/GCOV_intro.md
-      - url: https://nisar.asf.earthdatacloud.nasa.gov/NISAR-SAMPLE-DATA/DOCS/NISAR_D-102274_RevE_NASA_SDS_Product_Specification_L2_GCOV_Nov8_2024_w-sigs.pdf
-        title: NISAR GCOV Product Specification
-      - file: notebooks/HDF5_intro.md
+    - title: About NISAR data
     - title: Cookbook Set Up
       children:
         - file: notebooks/software_environment_docker.ipynb
@@ -28,6 +23,14 @@ project:
         - file: notebooks/search_NISAR_GCOV_earthaccess.ipynb
         - file: notebooks/Opening_HDF5_Python.ipynb
         - file: notebooks/NISAR_Pixel_Conversion.ipynb
+    - title: GCOV
+      children: 
+      - file: notebooks/GCOV_intro.md
+      - url: https://nisar.asf.earthdatacloud.nasa.gov/NISAR-SAMPLE-DATA/DOCS/NISAR_D-102274_RevE_NASA_SDS_Product_Specification_L2_GCOV_Nov8_2024_w-sigs.pdf
+        title: NISAR GCOV Product Specification
+    - title: RSLC
+    - title: GSLC
+    - title: GUNW
     - title: Data Loading, Manipulation, and Visualization
       children:
         - file: notebooks/load_subset_reproject_isce3.ipynb
@@ -68,5 +71,6 @@ project:
 execute:
   execute_notebooks: "off"
 site:
+    template: book-theme
   options:
     favicon: favicon.ico

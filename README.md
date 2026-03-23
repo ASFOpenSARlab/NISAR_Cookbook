@@ -18,16 +18,15 @@ The workflows in this Cookbook were created using proxy NISAR test data, availab
 Some workflows have been updated to use newly available production NISAR data, others have not.
 :::
 
-NISAR GCOV, is a Level-2 data product from the NISAR mission. GCOV, or Geocoded Polarimetric Covariance, provides calibrated, L-band radar data on a standardized grid, making it straightforward to load, analyze and explore in Python. 
+NISAR (NASA-ISRO Synthetic Aperture Radar) is a satellite mission designed to observe Earth's dynamic processes using microwave remote sensing. It's L-band and S-band measurements provide consistent global observations, regardless of cloud cover or daylight. 
 
-After learning to access and visualize GCOV data in this cookbook, you will be ready to begin applying NISAR imagery to a wide range of Earth science applications, including ecosystem monitoring, hydrology, cryosphere studies, natural hazards, and surface change analysis.
-
+After learning to access and visualize NISAR L-band data in this cookbook, you will be ready to begin applying NISAR imagery to a wide range of Earth science applications, including ecosystem monitoring, hydrology, cryosphere studies, natural hazards, and surface change analysis.
 
 ## Motivation
 
-The NISAR mission will provide one of the most comprehensive global radar datasets ever collected, offering new opportunities to study the dynamic Earth. This cookbook is designed to help a wide range of users, including students, researchers, and communities, to begin working with NISAR’s GCOV products.
+The NISAR mission will provide one of the most comprehensive global radar datasets ever collected, offering new opportunities to study the dynamic Earth. This cookbook is designed to help a wide range of users, including students, researchers, and communities, to begin working with NISAR’s multiple products.
 
-By introducing clear, hands-on examples, we hope to make the mission’s powerful data resources simple, approachable and usable. Our goal is to help you build the skills needed to explore GCOV data with confidence and apply NISAR’s capabilities to your own scientific, environmental, or community-focused questions.
+By introducing clear, hands-on examples, we hope to make the mission’s powerful data resources simple, approachable and usable. Our goal is to help you build the skills needed to explore NISAR data with confidence and apply NISAR’s capabilities to your own scientific, environmental, or community-focused questions.
 
 ## Authors
 
@@ -78,12 +77,12 @@ If you are interested in running this material locally on your computer, you wil
 1. Clone the `https://github.com/ProjectPythia/cookbook-example` repository:
 
    ```bash
-    git clone https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook.git
+    git clone https://github.com/ASFOpenSARlab/NISAR_Cookbook.git
    ```
 
-1. Move into the `NISAR_GCOV_Cookbook` directory
+1. Move into the `NISAR_Cookbook` directory
    ```bash
-   cd NISAR_GCOV_Cookbook
+   cd NISAR_Cookbook
    ```
 1. Move into the `notebooks` directory and start up Jupyterlab (requires that Jupyter Lab is installed)
    ```bash

@@ -21,20 +21,20 @@ project:
       - file: notebooks/GCOV_intro.md
       - url: https://nisar.asf.earthdatacloud.nasa.gov/NISAR-SAMPLE-DATA/DOCS/NISAR_D-102274_RevE_NASA_SDS_Product_Specification_L2_GCOV_Nov8_2024_w-sigs.pdf
         title: NISAR GCOV Product Specification
-      - title: Data Access
+      - title: GCOV Data Access
         children:
           - file: notebooks/search_download_NISAR_GCOV_asf_search.ipynb
           - file: notebooks/search_stream_NISAR_GCOV_asf_search.ipynb
           - file: notebooks/search_NISAR_GCOV_earthaccess.ipynb
-      - title: Data Loading, Manipulation, and Visualization
+      - title: GCOV Data Loading, Manipulation, and Visualization
         children:
           - file: notebooks/Opening_HDF5_Python.ipynb
           - file: notebooks/NISAR_Pixel_Conversion.ipynb
           - file: notebooks/load_subset_reproject_isce3.ipynb
-      - title: Backscatter Tutorials
+      - title: GCOV Backscatter Tutorials
         children:
           - file: notebooks/NISAR_GCOV_Time_Series_Example.ipynb
-      - title: PolSAR Tutorials
+      - title: GCOV PolSAR Tutorials
     - title: RSLC
     - title: GSLC
     - title: GUNW

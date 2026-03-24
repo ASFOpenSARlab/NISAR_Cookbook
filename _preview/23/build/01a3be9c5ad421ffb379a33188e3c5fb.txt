@@ -194,7 +194,15 @@ Group: /
         │       │               Data variables:
         │       │                   x        float32 4B ...
         │       │                   y        float32 4B ...
-        │       ...
+        │       ├── Group: /science/LSAR/GCOV/metadata/orbit
+        │       │       Dimensions:       (phony_dim_5: 62, phony_dim_6: 3)
+        │       │       Dimensions without coordinates: phony_dim_5, phony_dim_6
+        │       │       Data variables:
+        │       │           interpMethod  |S7 7B ...
+        │       │           orbitType     |S3 3B ...
+        │       │           position      (phony_dim_5, phony_dim_6) float64 1kB dask.array<chunksize=(62, 3), meta=np.ndarray>
+        │       │           time          (phony_dim_5) datetime64[ns] 496B dask.array<chunksize=(62,), meta=np.ndarray>
+        │       │           velocity      (phony_dim_5, phony_dim_6) float64 1kB dask.array<chunksize=(62, 3), meta=np.ndarray>
         │       ├── Group: /science/LSAR/GCOV/metadata/processingInformation
         │       │   ├── Group: /science/LSAR/GCOV/metadata/processingInformation/algorithms
         │       │   │       Dimensions:                                         ()

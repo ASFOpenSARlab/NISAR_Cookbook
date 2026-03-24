@@ -93,6 +93,7 @@ body.vscode-dark {
   min-width: 300px;
   max-width: 700px;
   line-height: 1.6;
+  padding-bottom: 4px;
 }
 
 .xr-text-repr-fallback {
@@ -103,8 +104,11 @@ body.vscode-dark {
 .xr-header {
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-bottom: 4px;
+}
+
+.xr-header {
   border-bottom: solid 1px var(--xr-border-color);
+  margin-bottom: 4px;
 }
 
 .xr-header > div,
@@ -115,20 +119,15 @@ body.vscode-dark {
 }
 
 .xr-obj-type,
-.xr-obj-name,
-.xr-group-name {
+.xr-obj-name {
   margin-left: 2px;
   margin-right: 10px;
 }
 
-.xr-group-name::before {
-  content: "📁";
-  padding-right: 0.3em;
-}
-
-.xr-group-name,
-.xr-obj-type {
+.xr-obj-type,
+.xr-group-box-contents > label {
   color: var(--xr-font-color2);
+  display: block;
 }
 
 .xr-sections {
@@ -143,28 +142,39 @@ body.vscode-dark {
   display: contents;
 }
 
-.xr-section-item input {
-  display: inline-block;
+.xr-section-item > input,
+.xr-group-box-contents > input,
+.xr-array-wrap > input {
+  display: block;
   opacity: 0;
   height: 0;
   margin: 0;
 }
 
-.xr-section-item input + label {
+.xr-section-item > input + label,
+.xr-var-item > input + label {
   color: var(--xr-disabled-color);
-  border: 2px solid transparent !important;
 }
 
-.xr-section-item input:enabled + label {
+.xr-section-item > input:enabled + label,
+.xr-var-item > input:enabled + label,
+.xr-array-wrap > input:enabled + label,
+.xr-group-box-contents > input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
 }
 
-.xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0) !important;
+.xr-section-item > input:focus-visible + label,
+.xr-var-item > input:focus-visible + label,
+.xr-array-wrap > input:focus-visible + label,
+.xr-group-box-contents > input:focus-visible + label {
+  outline: auto;
 }
 
-.xr-section-item input:enabled + label:hover {
+.xr-section-item > input:enabled + label:hover,
+.xr-var-item > input:enabled + label:hover,
+.xr-array-wrap > input:enabled + label:hover,
+.xr-group-box-contents > input:enabled + label:hover {
   color: var(--xr-font-color0);
 }
 
@@ -172,11 +182,25 @@ body.vscode-dark {
   grid-column: 1;
   color: var(--xr-font-color2);
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.xr-section-summary > em {
+  font-weight: normal;
+}
+
+.xr-span-grid {
+  grid-column-end: -1;
 }
 
 .xr-section-summary > span {
   display: inline-block;
-  padding-left: 0.5em;
+  padding-left: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label > span {
+  display: inline-block;
+  padding-left: 0.6em;
 }
 
 .xr-section-summary-in:disabled + label {
@@ -204,7 +228,8 @@ body.vscode-dark {
 }
 
 .xr-section-summary,
-.xr-section-inline-details {
+.xr-section-inline-details,
+.xr-group-box-contents > label {
   padding-top: 4px;
 }
 
@@ -213,20 +238,29 @@ body.vscode-dark {
 }
 
 .xr-section-details {
-  display: none;
   grid-column: 1 / -1;
   margin-top: 4px;
   margin-bottom: 5px;
+}
+
+.xr-section-summary-in ~ .xr-section-details {
+  display: none;
 }
 
 .xr-section-summary-in:checked ~ .xr-section-details {
   display: contents;
 }
 
+.xr-children {
+  display: inline-grid;
+  grid-template-columns: 100%;
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
 .xr-group-box {
   display: inline-grid;
-  grid-template-columns: 0px 20px auto;
-  width: 100%;
+  grid-template-columns: 0px 30px auto;
 }
 
 .xr-group-box-vline {
@@ -240,13 +274,43 @@ body.vscode-dark {
   grid-column-start: 2;
   grid-row-start: 1;
   height: 1em;
-  width: 20px;
+  width: 26px;
   border-bottom: 0.2em solid;
   border-color: var(--xr-border-color);
 }
 
 .xr-group-box-contents {
   grid-column-start: 3;
+  padding-bottom: 4px;
+}
+
+.xr-group-box-contents > label::before {
+  content: "📂";
+  padding-right: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label::before {
+  content: "📁";
+}
+
+.xr-group-box-contents > input:checked + label {
+  padding-bottom: 0px;
+}
+
+.xr-group-box-contents > input:checked ~ .xr-sections {
+  display: none;
+}
+
+.xr-group-box-contents > input + label > span {
+  display: none;
+}
+
+.xr-group-box-ellipsis {
+  font-size: 1.4em;
+  font-weight: 900;
+  color: var(--xr-font-color2);
+  letter-spacing: 0.15em;
+  cursor: default;
 }
 
 .xr-array-wrap {
@@ -495,11 +559,11 @@ Data variables:
     projection             (time) uint32 20B 32637 32637 32637 32637 32637
     rtcGammaToSigmaFactor  (time, yCoordinates, xCoordinates) float32 6GB dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;
     xCoordinateSpacing     (time) float64 40B 20.0 20.0 20.0 20.0 20.0
-    yCoordinateSpacing     (time) float64 40B -20.0 -20.0 -20.0 -20.0 -20.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-826eb2b6-0dd5-4add-8ab0-391a2c3dcc6e' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-826eb2b6-0dd5-4add-8ab0-391a2c3dcc6e' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 5</li><li><span class='xr-has-index'>yCoordinates</span>: 16704</li><li><span class='xr-has-index'>xCoordinates</span>: 17064</li><li><span>phony_dim_0</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-ea3a0b05-7072-46d6-9b89-825939a0326e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ea3a0b05-7072-46d6-9b89-825939a0326e' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2025-11-22T02:46:18 ... 2026-01-...</div><input id='attrs-36b9597d-f057-412a-b889-7ab974eda8d4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-36b9597d-f057-412a-b889-7ab974eda8d4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e6a85ed7-83c9-47b5-a6bb-32586f6e180e' class='xr-var-data-in' type='checkbox'><label for='data-e6a85ed7-83c9-47b5-a6bb-32586f6e180e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2025-11-22T02:46:18.000000000&#x27;, &#x27;2025-12-04T02:46:18.000000000&#x27;,
+    yCoordinateSpacing     (time) float64 40B -20.0 -20.0 -20.0 -20.0 -20.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-95f08e38-f27b-470e-a101-42c26aedfc45' class='xr-section-summary-in' type='checkbox' disabled /><label for='section-95f08e38-f27b-470e-a101-42c26aedfc45' class='xr-section-summary'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 5</li><li><span class='xr-has-index'>yCoordinates</span>: 16704</li><li><span class='xr-has-index'>xCoordinates</span>: 17064</li><li><span>phony_dim_0</span>: 2</li></ul></div></li><li class='xr-section-item'><input id='section-75a43132-c587-42c5-9fb1-184f0ca8a681' class='xr-section-summary-in' type='checkbox' checked /><label for='section-75a43132-c587-42c5-9fb1-184f0ca8a681' class='xr-section-summary' title='Expand/collapse section'>Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2025-11-22T02:46:18 ... 2026-01-...</div><input id='attrs-30fe64f6-aee1-49c8-9adb-2f6397f9bb2b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-30fe64f6-aee1-49c8-9adb-2f6397f9bb2b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-64b2a90a-d289-4ebd-81cd-69071028455b' class='xr-var-data-in' type='checkbox'><label for='data-64b2a90a-d289-4ebd-81cd-69071028455b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2025-11-22T02:46:18.000000000&#x27;, &#x27;2025-12-04T02:46:18.000000000&#x27;,
        &#x27;2025-12-16T02:46:19.000000000&#x27;, &#x27;2025-12-28T02:46:19.000000000&#x27;,
-       &#x27;2026-01-09T02:46:20.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>yCoordinates</span></div><div class='xr-var-dims'>(yCoordinates)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.588e+06 1.588e+06 ... 1.254e+06</div><input id='attrs-a2afa620-05df-4713-a897-853e05b3883a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a2afa620-05df-4713-a897-853e05b3883a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bcd7a970-2f1a-47d5-a2b0-0b075a8ce633' class='xr-var-data-in' type='checkbox'><label for='data-bcd7a970-2f1a-47d5-a2b0-0b075a8ce633' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Y coordinates in specified projection</dd><dt><span>long_name :</span></dt><dd>Y coordinates of projection</dd><dt><span>pixel_coordinate_convention :</span></dt><dd>center</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([1588310., 1588290., 1588270., ..., 1254290., 1254270., 1254250.],
-      shape=(16704,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>xCoordinates</span></div><div class='xr-var-dims'>(xCoordinates)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>6.041e+05 6.041e+05 ... 9.454e+05</div><input id='attrs-e26b15d2-9726-4da1-8cf6-a2a76a2aa8b7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e26b15d2-9726-4da1-8cf6-a2a76a2aa8b7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cc75d23c-2dba-4617-9160-e7a3f5d7f869' class='xr-var-data-in' type='checkbox'><label for='data-cc75d23c-2dba-4617-9160-e7a3f5d7f869' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>X coordinates in specified projection</dd><dt><span>long_name :</span></dt><dd>X coordinates of projection</dd><dt><span>pixel_coordinate_convention :</span></dt><dd>center</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([604090., 604110., 604130., ..., 945310., 945330., 945350.],
-      shape=(17064,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-27cd6ac1-7ce7-4a61-8ddd-ff3fbff3d115' class='xr-section-summary-in' type='checkbox'  checked><label for='section-27cd6ac1-7ce7-4a61-8ddd-ff3fbff3d115' class='xr-section-summary' >Data variables: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>HHHH</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-4b1993af-7636-4f7c-850a-9125176285ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4b1993af-7636-4f7c-850a-9125176285ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-215ac0f4-ac65-4781-8c96-50611cfd98ba' class='xr-var-data-in' type='checkbox'><label for='data-215ac0f4-ac65-4781-8c96-50611cfd98ba' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Covariance between HH and HH</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Geocoded polarimetric covariance term HHHH</dd><dt><span>max_value :</span></dt><dd>1031.838623046875</dd><dt><span>mean_value :</span></dt><dd>0.10699976235628128</dd><dt><span>min_value :</span></dt><dd>2.2544501538306125e-18</dd><dt><span>sample_stddev :</span></dt><dd>0.1617986559867859</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_min :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><table>
+       &#x27;2026-01-09T02:46:20.000000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>yCoordinates</span></div><div class='xr-var-dims'>(yCoordinates)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.588e+06 1.588e+06 ... 1.254e+06</div><input id='attrs-1b26a447-5053-4cfd-b7fb-1f9037d7826e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1b26a447-5053-4cfd-b7fb-1f9037d7826e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b78d1dad-bf4a-4050-b67f-a8459060e709' class='xr-var-data-in' type='checkbox'><label for='data-b78d1dad-bf4a-4050-b67f-a8459060e709' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Y coordinates in specified projection</dd><dt><span>long_name :</span></dt><dd>Y coordinates of projection</dd><dt><span>pixel_coordinate_convention :</span></dt><dd>center</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([1588310., 1588290., 1588270., ..., 1254290., 1254270., 1254250.],
+      shape=(16704,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>xCoordinates</span></div><div class='xr-var-dims'>(xCoordinates)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>6.041e+05 6.041e+05 ... 9.454e+05</div><input id='attrs-71e59a2d-a0c1-4a37-a334-c669f8bd632c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-71e59a2d-a0c1-4a37-a334-c669f8bd632c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fc516645-43ca-4bf2-828c-08ea2676ce14' class='xr-var-data-in' type='checkbox'><label for='data-fc516645-43ca-4bf2-828c-08ea2676ce14' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>X coordinates in specified projection</dd><dt><span>long_name :</span></dt><dd>X coordinates of projection</dd><dt><span>pixel_coordinate_convention :</span></dt><dd>center</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([604090., 604110., 604130., ..., 945310., 945330., 945350.],
+      shape=(17064,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fb2f2f50-31a0-461b-be1d-16c0d31cd993' class='xr-section-summary-in' type='checkbox' checked /><label for='section-fb2f2f50-31a0-461b-be1d-16c0d31cd993' class='xr-section-summary' title='Expand/collapse section'>Data variables: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>HHHH</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-8031321e-85bd-4d5e-b40c-f53529a82055' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8031321e-85bd-4d5e-b40c-f53529a82055' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-46fc7323-88f3-480b-ba3b-23bc712dd821' class='xr-var-data-in' type='checkbox'><label for='data-46fc7323-88f3-480b-ba3b-23bc712dd821' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Covariance between HH and HH</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Geocoded polarimetric covariance term HHHH</dd><dt><span>max_value :</span></dt><dd>1031.838623046875</dd><dt><span>mean_value :</span></dt><dd>0.10699976235628128</dd><dt><span>min_value :</span></dt><dd>2.2544501538306125e-18</dd><dt><span>sample_stddev :</span></dt><dd>0.1617986559867859</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_min :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -595,7 +659,7 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>HVHV</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-8df14db8-9d44-4314-99f5-83c307232b0f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8df14db8-9d44-4314-99f5-83c307232b0f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f9329ae2-804a-4bdb-bd91-9a7251dab391' class='xr-var-data-in' type='checkbox'><label for='data-f9329ae2-804a-4bdb-bd91-9a7251dab391' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Covariance between HV and HV</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Geocoded polarimetric covariance term HVHV</dd><dt><span>max_value :</span></dt><dd>127.72919464111328</dd><dt><span>mean_value :</span></dt><dd>0.011751119047403336</dd><dt><span>min_value :</span></dt><dd>5.829235351467981e-19</dd><dt><span>sample_stddev :</span></dt><dd>0.017816800624132156</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_min :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>HVHV</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-29c46387-41b6-4be5-90eb-2d21617aac8d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-29c46387-41b6-4be5-90eb-2d21617aac8d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d9378526-5d6e-466d-92e1-a7300612e5c7' class='xr-var-data-in' type='checkbox'><label for='data-d9378526-5d6e-466d-92e1-a7300612e5c7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Covariance between HV and HV</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Geocoded polarimetric covariance term HVHV</dd><dt><span>max_value :</span></dt><dd>127.72919464111328</dd><dt><span>mean_value :</span></dt><dd>0.011751119047403336</dd><dt><span>min_value :</span></dt><dd>5.829235351467981e-19</dd><dt><span>sample_stddev :</span></dt><dd>0.017816800624132156</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_min :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -691,7 +755,7 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>listOfCovarianceTerms</span></div><div class='xr-var-dims'>(time, phony_dim_0)</div><div class='xr-var-dtype'>|S4</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;</div><input id='attrs-7fe8804f-3511-4a1d-b519-1222a0ff2a6b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7fe8804f-3511-4a1d-b519-1222a0ff2a6b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b8f31458-8005-4399-9b7b-f03ef294bd7b' class='xr-var-data-in' type='checkbox'><label for='data-b8f31458-8005-4399-9b7b-f03ef294bd7b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>List of processed covariance terms</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>listOfCovarianceTerms</span></div><div class='xr-var-dims'>(time, phony_dim_0)</div><div class='xr-var-dtype'>|S4</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;</div><input id='attrs-237dcb68-1884-4d6c-ba16-c54d3d698e1a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-237dcb68-1884-4d6c-ba16-c54d3d698e1a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-440b00a5-493e-42c3-b067-530bbc4175fb' class='xr-var-data-in' type='checkbox'><label for='data-440b00a5-493e-42c3-b067-530bbc4175fb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>List of processed covariance terms</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -750,7 +814,7 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>listOfPolarizations</span></div><div class='xr-var-dims'>(time, phony_dim_0)</div><div class='xr-var-dtype'>|S2</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;</div><input id='attrs-7acb5479-260c-47cc-9035-6b38f9fbe355' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7acb5479-260c-47cc-9035-6b38f9fbe355' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6fd97373-d306-4d50-a81d-f98bfa917ffc' class='xr-var-data-in' type='checkbox'><label for='data-6fd97373-d306-4d50-a81d-f98bfa917ffc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>List of processed polarization layers with frequency A</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>listOfPolarizations</span></div><div class='xr-var-dims'>(time, phony_dim_0)</div><div class='xr-var-dtype'>|S2</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;</div><input id='attrs-de3f359c-942e-44ea-8e20-a2521df840ac' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-de3f359c-942e-44ea-8e20-a2521df840ac' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aaa7191e-49d5-4174-b374-d2c1845f0c42' class='xr-var-data-in' type='checkbox'><label for='data-aaa7191e-49d5-4174-b374-d2c1845f0c42' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>List of processed polarization layers with frequency A</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -809,7 +873,7 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mask</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-fbf1f4a3-28fb-42c7-9871-212c8f562628' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fbf1f4a3-28fb-42c7-9871-212c8f562628' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ab69cbe5-469a-4511-b994-93bdb456cab1' class='xr-var-data-in' type='checkbox'><label for='data-ab69cbe5-469a-4511-b994-93bdb456cab1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mask indicating the subswath number associated with valid GCOV samples. A GCOV sample is only considered valid if it is generated from fully-focused radar samples. If at least one radar sample in the averaging set is partially focused or invalid, the corresponding mask pixel will contain the value 0. GCOV pixels outside of the radar acquisition extent are filled with the value 255</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Valid samples subswath mask</dd><dt><span>valid_min :</span></dt><dd>0</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>mask</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-28a27ba4-022a-4df4-931e-83aafffb83e6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-28a27ba4-022a-4df4-931e-83aafffb83e6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-39f7ee11-0729-4032-a3a2-57b06e3a5072' class='xr-var-data-in' type='checkbox'><label for='data-39f7ee11-0729-4032-a3a2-57b06e3a5072' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Mask indicating the subswath number associated with valid GCOV samples. A GCOV sample is only considered valid if it is generated from fully-focused radar samples. If at least one radar sample in the averaging set is partially focused or invalid, the corresponding mask pixel will contain the value 0. GCOV pixels outside of the radar acquisition extent are filled with the value 255</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Valid samples subswath mask</dd><dt><span>valid_min :</span></dt><dd>0</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -905,7 +969,7 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>numberOfLooks</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-ab726594-0bbb-48d5-bf03-4f6a781fc20f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ab726594-0bbb-48d5-bf03-4f6a781fc20f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4bdebc25-c10c-40a4-a88a-d1e72d6aafd9' class='xr-var-data-in' type='checkbox'><label for='data-4bdebc25-c10c-40a4-a88a-d1e72d6aafd9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of averaged radar-grid pixels for covariance estimation</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Number of radar looks</dd><dt><span>max_value :</span></dt><dd>24.776872634887695</dd><dt><span>mean_value :</span></dt><dd>9.292001724243164</dd><dt><span>min_value :</span></dt><dd>1.6133276936614038e-09</dd><dt><span>sample_stddev :</span></dt><dd>1.543501853942871</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_min :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>numberOfLooks</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-4def115c-a156-41bc-8590-a9dd44e4962f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4def115c-a156-41bc-8590-a9dd44e4962f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-be503ccc-3a15-46d4-b6c3-67769872ea61' class='xr-var-data-in' type='checkbox'><label for='data-be503ccc-3a15-46d4-b6c3-67769872ea61' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of averaged radar-grid pixels for covariance estimation</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Number of radar looks</dd><dt><span>max_value :</span></dt><dd>24.776872634887695</dd><dt><span>mean_value :</span></dt><dd>9.292001724243164</dd><dt><span>min_value :</span></dt><dd>1.6133276936614038e-09</dd><dt><span>sample_stddev :</span></dt><dd>1.543501853942871</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_min :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1001,7 +1065,7 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>numberOfSubSwaths</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>1 1 1 1 1</div><input id='attrs-bc7faa1e-66d8-4f27-82b1-06b0915435b5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bc7faa1e-66d8-4f27-82b1-06b0915435b5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4a00200e-d9ea-4332-b668-a6e0179e5c7e' class='xr-var-data-in' type='checkbox'><label for='data-4a00200e-d9ea-4332-b668-a6e0179e5c7e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of swaths of continuous imagery, due to transmit gaps</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array([1, 1, 1, 1, 1], dtype=uint8)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>projection</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>uint32</div><div class='xr-var-preview xr-preview'>32637 32637 32637 32637 32637</div><input id='attrs-43902b61-ba36-44c9-ac5a-fa90f74212f0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-43902b61-ba36-44c9-ac5a-fa90f74212f0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-713ad596-0b92-410d-991d-efd1fea5c6e4' class='xr-var-data-in' type='checkbox'><label for='data-713ad596-0b92-410d-991d-efd1fea5c6e4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Product map grid projection: EPSG code, with additional projection information as HDF5 Attributes</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>epsg_code :</span></dt><dd>32637</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>39.0</dd><dt><span>longitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 37N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,39],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32637&quot;]]</dd><dt><span>utm_zone_number :</span></dt><dd>37</dd></dl></div><div class='xr-var-data'><pre>array([32637, 32637, 32637, 32637, 32637], dtype=uint32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rtcGammaToSigmaFactor</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-4a0c3f72-6501-4035-8ca9-1b0cdbd03fa7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4a0c3f72-6501-4035-8ca9-1b0cdbd03fa7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-610c2e82-16ec-4a67-aaa7-f6e168318a55' class='xr-var-data-in' type='checkbox'><label for='data-610c2e82-16ec-4a67-aaa7-f6e168318a55' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Radiometric terrain correction (RTC) scaling factor to normalize backscatter coefficients from gamma0 to sigma0, accounting for local terrain</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Radiometric terrain correction area normalization factor gamma0 to sigma0</dd><dt><span>max_value :</span></dt><dd>0.9989367723464966</dd><dt><span>mean_value :</span></dt><dd>0.7390308976173401</dd><dt><span>min_value :</span></dt><dd>0.0011025796411558986</dd><dt><span>sample_stddev :</span></dt><dd>0.08770907670259476</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_min :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>numberOfSubSwaths</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>1 1 1 1 1</div><input id='attrs-11971223-43fa-4788-9695-3b68e9d51e82' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-11971223-43fa-4788-9695-3b68e9d51e82' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1402e9f6-9c27-4038-9272-f19329daf72b' class='xr-var-data-in' type='checkbox'><label for='data-1402e9f6-9c27-4038-9272-f19329daf72b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Number of swaths of continuous imagery, due to transmit gaps</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array([1, 1, 1, 1, 1], dtype=uint8)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>projection</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>uint32</div><div class='xr-var-preview xr-preview'>32637 32637 32637 32637 32637</div><input id='attrs-aee6d244-acbd-4aba-a135-6de10ac9009d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aee6d244-acbd-4aba-a135-6de10ac9009d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-945be331-ca09-421e-a97d-be72f7640031' class='xr-var-data-in' type='checkbox'><label for='data-945be331-ca09-421e-a97d-be72f7640031' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Product map grid projection: EPSG code, with additional projection information as HDF5 Attributes</dd><dt><span>ellipsoid :</span></dt><dd>WGS84</dd><dt><span>epsg_code :</span></dt><dd>32637</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>39.0</dd><dt><span>longitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 37N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,39],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32637&quot;]]</dd><dt><span>utm_zone_number :</span></dt><dd>37</dd></dl></div><div class='xr-var-data'><pre>array([32637, 32637, 32637, 32637, 32637], dtype=uint32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rtcGammaToSigmaFactor</span></div><div class='xr-var-dims'>(time, yCoordinates, xCoordinates)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 5632, 5632), meta=np.ndarray&gt;</div><input id='attrs-1f7034c3-6c7c-46bd-a9b3-909aae73614a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1f7034c3-6c7c-46bd-a9b3-909aae73614a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4a6343c4-bebb-4afe-a6b1-05e32d0788fa' class='xr-var-data-in' type='checkbox'><label for='data-4a6343c4-bebb-4afe-a6b1-05e32d0788fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Radiometric terrain correction (RTC) scaling factor to normalize backscatter coefficients from gamma0 to sigma0, accounting for local terrain</dd><dt><span>grid_mapping :</span></dt><dd>projection</dd><dt><span>long_name :</span></dt><dd>Radiometric terrain correction area normalization factor gamma0 to sigma0</dd><dt><span>max_value :</span></dt><dd>0.9989367723464966</dd><dt><span>mean_value :</span></dt><dd>0.7390308976173401</dd><dt><span>min_value :</span></dt><dd>0.0011025796411558986</dd><dt><span>sample_stddev :</span></dt><dd>0.08770907670259476</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>valid_min :</span></dt><dd>0.0</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1097,4 +1161,4 @@ Data variables:
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xCoordinateSpacing</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>20.0 20.0 20.0 20.0 20.0</div><input id='attrs-231694bb-dd49-4025-bd43-ebaa24dd3de9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-231694bb-dd49-4025-bd43-ebaa24dd3de9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-78ce6b90-7a74-4e76-b119-5d5aa1f64a07' class='xr-var-data-in' type='checkbox'><label for='data-78ce6b90-7a74-4e76-b119-5d5aa1f64a07' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Nominal spacing in meters between consecutive pixels</dd><dt><span>long_name :</span></dt><dd>X coordinates spacing</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([20., 20., 20., 20., 20.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>yCoordinateSpacing</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-20.0 -20.0 -20.0 -20.0 -20.0</div><input id='attrs-6efb37ce-caf8-459d-bd4d-e86343811a6f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6efb37ce-caf8-459d-bd4d-e86343811a6f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0986efa2-7c41-44fb-aeab-40171982ef28' class='xr-var-data-in' type='checkbox'><label for='data-0986efa2-7c41-44fb-aeab-40171982ef28' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Nominal spacing in meters between consecutive lines</dd><dt><span>long_name :</span></dt><dd>Y coordinates spacing</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([-20., -20., -20., -20., -20.])</pre></div></li></ul></div></li></ul></div></div>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xCoordinateSpacing</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>20.0 20.0 20.0 20.0 20.0</div><input id='attrs-fcf7586b-6f42-4bce-8396-dc565fa31fc7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fcf7586b-6f42-4bce-8396-dc565fa31fc7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4d863f62-1956-4b6a-a70b-2e284f144b14' class='xr-var-data-in' type='checkbox'><label for='data-4d863f62-1956-4b6a-a70b-2e284f144b14' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Nominal spacing in meters between consecutive pixels</dd><dt><span>long_name :</span></dt><dd>X coordinates spacing</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([20., 20., 20., 20., 20.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>yCoordinateSpacing</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-20.0 -20.0 -20.0 -20.0 -20.0</div><input id='attrs-5462d657-e650-47f5-9a9d-f6618405dc40' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5462d657-e650-47f5-9a9d-f6618405dc40' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-08f12d87-283b-49cd-993f-35a6415a2960' class='xr-var-data-in' type='checkbox'><label for='data-08f12d87-283b-49cd-993f-35a6415a2960' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Nominal spacing in meters between consecutive lines</dd><dt><span>long_name :</span></dt><dd>Y coordinates spacing</dd><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([-20., -20., -20., -20., -20.])</pre></div></li></ul></div></li></ul></div></div>

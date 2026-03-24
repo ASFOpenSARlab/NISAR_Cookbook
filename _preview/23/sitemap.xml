@@ -38,12 +38,6 @@
     <loc>http://localhost:3000/notebooks/nisar-gcov-time-series-example</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/nisar-gcov-sarchangedetectionmethods</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/polsar</loc>
-  </url>
-  <url>
     <loc>http://localhost:3000/contributing</loc>
   </url>
   <url>

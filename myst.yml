@@ -28,20 +28,17 @@ project:
       - file: notebooks/GCOV_intro.md
       - url: https://nisar.asf.earthdatacloud.nasa.gov/NISAR-SAMPLE-DATA/DOCS/NISAR_D-102274_RevE_NASA_SDS_Product_Specification_L2_GCOV_Nov8_2024_w-sigs.pdf
         title: NISAR GCOV Product Specification
+      - title: Data Loading, Manipulation, and Visualization
+        children:
+          - file: notebooks/load_subset_reproject_isce3.ipynb
+          - file: notebooks/load_subset_reproject_xr.ipynb
+      - title: Backscatter Tutorials
+        children:
+          - file: notebooks/NISAR_GCOV_Time_Series_Example.ipynb
+      - title: PolSAR Tutorials
     - title: RSLC
     - title: GSLC
     - title: GUNW
-    - title: Data Loading, Manipulation, and Visualization
-      children:
-        - file: notebooks/load_subset_reproject_isce3.ipynb
-        - file: notebooks/load_subset_reproject_xr.ipynb
-    - title: Backscatter Tutorials
-      children:
-        - file: notebooks/NISAR_GCOV_Time_Series_Example.ipynb
-        - file: notebooks/NISAR_GCOV_SARChangeDetectionMethods.ipynb
-    - title: PolSAR Tutorials
-      children:
-        - file: notebooks/polSAR.ipynb
     - title: Additional NISAR Resources
       children:
       - url: https://nisar-docs.asf.alaska.edu/
@@ -54,7 +51,7 @@ project:
         title: ISCE3 Documentation (software backing NISAR processor)
       - url: https://search.asf.alaska.edu/
         title: ASF Data Search (Vertex)
-    - title: Contribute to the NISAR GCOV Cookbook
+    - title: Contribute to the NISAR Cookbook
       children:
       - file: CONTRIBUTING.md
       - file: notebooks/notebook-template.ipynb

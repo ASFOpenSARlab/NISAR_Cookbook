@@ -1,23 +1,23 @@
-# NISAR GCOV Cookbook Contributor's Guide
+# NISAR Cookbook Contributor's Guide
 <br>
 
-We welcome contributions of all kinds! If you spot a bug, please [raise an issue here](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues). We encourage Pull Requests to address bugs or add new features and data recipes.
+We welcome contributions of all kinds! If you spot a bug, please [raise an issue here](https://github.com/ASFOpenSARlab/NISAR_Cookbook/issues). We encourage Pull Requests to address bugs or add new features and data recipes.
 <br>
 
-Please read our [Code of Conduct](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/CODE_OF_CONDUCT.md) before contributing.
+Please read our [Code of Conduct](https://github.com/ASFOpenSARlab/NISAR_Cookbook/CODE_OF_CONDUCT.md) before contributing.
 
 This project uses the standard **fork → branch → pull request** workflow.
 
-## 1. View current [issues](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues) and engage in discussions
-See if the bug or feature you plan to work on is already under discussion or. If it's not, start a discussion by raising an [issue](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook/issues).
+## 1. View current [issues](https://github.com/ASFOpenSARlab/NISAR_Cookbook/issues) and engage in discussions
+See if the bug or feature you plan to work on is already under discussion or. If it's not, start a discussion by raising an [issue](https://github.com/ASFOpenSARlab/NISAR_Cookbook/issues).
 
 ## 2. Fork the repository
-Click the **Fork** button at the top-right of the [NISAR_GCOV_Cookbook GitHub page](https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook) to create your own copy of the repo.
+Click the **Fork** button at the top-right of the [NISAR_Cookbook GitHub page](https://github.com/ASFOpenSARlab/NISAR_Cookbook) to create your own copy of the repo.
 
 ## 3. Clone your fork
 ```bash
-git clone https://github.com/<your-username>/NISAR_GCOV_Cookbook.git
-cd NISAR_GCOV_Cookbook
+git clone https://github.com/<your-username>/NISAR_Cookbook.git
+cd NISAR_Cookbook
 ```
 
 ## 4. Create a feature branch
@@ -28,7 +28,7 @@ git checkout -b feature/my-change
 ## 5. Add the upstream remote
 This lets you pull updates from the main project.
 ```bash
-git remote add upstream https://github.com/ASFOpenSARlab/NISAR_GCOV_Cookbook.git
+git remote add upstream https://github.com/ASFOpenSARlab/NISAR_Cookbook.git
 git remote -v
 ```
 

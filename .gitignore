@@ -139,3 +139,4 @@ dmypy.json
 # pixi environments
 .pixi/*
 !.pixi/config.toml
+notebooks/GCOV_frequencyA_HVHV.tif

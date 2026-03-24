@@ -11,6 +11,9 @@
     <loc>http://localhost:3000/notebooks/set-up-earthdata-login</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/gcov-intro</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/search-download-nisar-gcov-asf-search</loc>
   </url>
   <url>
@@ -26,13 +29,7 @@
     <loc>http://localhost:3000/notebooks/nisar-pixel-conversion</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/gcov-intro</loc>
-  </url>
-  <url>
     <loc>http://localhost:3000/notebooks/load-subset-reproject-isce3</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/load-subset-reproject-xr</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/nisar-gcov-time-series-example</loc>

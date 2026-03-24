@@ -5,16 +5,13 @@
     <loc>http://localhost:3000</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/gcov-intro</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/hdf5-intro</loc>
-  </url>
-  <url>
     <loc>http://localhost:3000/notebooks/software-environment-docker</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/set-up-earthdata-login</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/gcov-intro</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/search-download-nisar-gcov-asf-search</loc>
@@ -35,16 +32,7 @@
     <loc>http://localhost:3000/notebooks/load-subset-reproject-isce3</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/load-subset-reproject-xr</loc>
-  </url>
-  <url>
     <loc>http://localhost:3000/notebooks/nisar-gcov-time-series-example</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/nisar-gcov-sarchangedetectionmethods</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/polsar</loc>
   </url>
   <url>
     <loc>http://localhost:3000/contributing</loc>

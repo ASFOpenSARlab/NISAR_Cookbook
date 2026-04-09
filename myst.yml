@@ -23,6 +23,7 @@ project:
         - file: notebooks/search_NISAR_GCOV_earthaccess.ipynb
         - file: notebooks/Opening_HDF5_Python.ipynb
         - file: notebooks/NISAR_Pixel_Conversion.ipynb
+        - file: notebooks/NISAR_data_access.ipynb
     - title: GCOV
       children: 
       - file: notebooks/GCOV_intro.md

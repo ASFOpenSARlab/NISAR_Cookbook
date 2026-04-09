@@ -16,33 +16,28 @@ project:
       children:
         - file: notebooks/software_environment_docker.ipynb
         - file: notebooks/set_up_Earthdata_Login.md
-    - title: Data Access
-      children:
-        - file: notebooks/search_download_NISAR_GCOV_asf_search.ipynb
-        - file: notebooks/search_stream_NISAR_GCOV_asf_search.ipynb
-        - file: notebooks/search_NISAR_GCOV_earthaccess.ipynb
-        - file: notebooks/Opening_HDF5_Python.ipynb
-        - file: notebooks/NISAR_Pixel_Conversion.ipynb
-        - file: notebooks/NISAR_data_access.ipynb
     - title: GCOV
       children: 
       - file: notebooks/GCOV_intro.md
       - url: https://nisar.asf.earthdatacloud.nasa.gov/NISAR-SAMPLE-DATA/DOCS/NISAR_D-102274_RevE_NASA_SDS_Product_Specification_L2_GCOV_Nov8_2024_w-sigs.pdf
         title: NISAR GCOV Product Specification
+      - title: GCOV Data Access
+        children:
+          - file: notebooks/search_download_NISAR_GCOV_asf_search.ipynb
+          - file: notebooks/search_stream_NISAR_GCOV_asf_search.ipynb
+          - file: notebooks/search_NISAR_GCOV_earthaccess.ipynb
+      - title: GCOV Data Loading, Manipulation, and Visualization
+        children:
+          - file: notebooks/Opening_HDF5_Python.ipynb
+          - file: notebooks/NISAR_Pixel_Conversion.ipynb
+          - file: notebooks/load_subset_reproject_isce3.ipynb
+      - title: GCOV Backscatter Tutorials
+        children:
+          - file: notebooks/NISAR_GCOV_Time_Series_Example.ipynb
+      - title: GCOV PolSAR Tutorials
     - title: RSLC
     - title: GSLC
     - title: GUNW
-    - title: Data Loading, Manipulation, and Visualization
-      children:
-        - file: notebooks/load_subset_reproject_isce3.ipynb
-        - file: notebooks/load_subset_reproject_xr.ipynb
-    - title: Backscatter Tutorials
-      children:
-        - file: notebooks/NISAR_GCOV_Time_Series_Example.ipynb
-        - file: notebooks/NISAR_GCOV_SARChangeDetectionMethods.ipynb
-    - title: PolSAR Tutorials
-      children:
-        - file: notebooks/polSAR.ipynb
     - title: Additional NISAR Resources
       children:
       - url: https://nisar-docs.asf.alaska.edu/
@@ -55,7 +50,7 @@ project:
         title: ISCE3 Documentation (software backing NISAR processor)
       - url: https://search.asf.alaska.edu/
         title: ASF Data Search (Vertex)
-    - title: Contribute to the NISAR GCOV Cookbook
+    - title: Contribute to the NISAR Cookbook
       children:
       - file: CONTRIBUTING.md
       - file: notebooks/notebook-template.ipynb

@@ -1,4 +1,4 @@
-# NISAR L2 GCOV Cookbook
+# NISAR Cookbook
 <br>
 
 [![Jupyter Book](https://img.shields.io/badge/Open-NISAR%20GCOV%20Cookbook-brightgreen?logo=jupyter)](https://asfopensarlab.github.io/NISAR_Cookbook/)[![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
@@ -10,12 +10,20 @@
 *NISAR Imaging Animation: https://assets.science.nasa.gov/content/dam/science/missions/nisar/nisar-jpl/multimedia/3_PAR_SARImaging.mp4*
 :::
 
-:::{warning} This Cookbook is pre-release and under active development
+:::{warning} This Cookbook is under active development
 
-The workflows in this Cookbook were created using proxy NISAR test data, available here:
+The workflows in this Cookbook were initially created using proxy NISAR test data, available here:
 [https://science.nasa.gov/mission/nisar/sample-data/](https://science.nasa.gov/mission/nisar/sample-data/)
 
-Some workflows have been updated to use newly available production NISAR data, others have not.
+Some workflows have been updated to use newly available production NISAR data, others have not. Those still needing work have been temporarily removed from the table of contents but remain in the repository.
+
+Upcoming cookbook goals include:
+- more GCOV backscatter notebooks
+- GCOV PolSAR notebooks
+- GSLC notebooks (custom InSAR generation)
+- GUNW notebooks
+
+We welcome [community contributions](contribute)!
 :::
 
 NISAR (NASA-ISRO Synthetic Aperture Radar) is a satellite mission designed to observe Earth's dynamic processes using microwave remote sensing. It's L-band and S-band measurements provide consistent global observations, regardless of cloud cover or daylight. 
@@ -36,34 +44,32 @@ Lewandowski, Alex. White, Julia.
   <img src="https://contrib.rocks/image?repo=ASFOpenSARlab/NISAR_GCOV_Cookbook" />
 </a>
 
+(contribute)=
 ## Contribute!
 
 This project is open source and open development. See the [contributor's guide](CONTRIBUTING.md) to learn how to join the project and make your first contribution.
 
 ## Structure
 
-### Section 1: About NISAR GCOV Data
-Learn about NISAR GCOV data, its HDF5 structure, and its applications.
-
-### Section 2: Cookbook Set Up
+### Section 1: Cookbook Set Up
 Gain access to the data and set up required software environments for the included workflows.
 
-### Section 3: Data Access
-Learn how to search, download GCOV data
+### Section 2: GCOV
+Learn how to search, access, and work with GCOV data.
 
-### Section 4: Data Loading, Manipulation, and Visualization
-Learn how to load, work with, and create visualizations of GCOV data in Python.
+#### Section 2a: GCOV Data Access
+Learn how to search and download GCOV data.
 
-### Section 3: Backscatter Tutorials
-Notebooks focusing on NISAR GCOV backscatter channels.
+#### Section 2b: GCOV Data Loading, Manipulation, and Visualization
+Learn how to load, work with, and create visualizations with GCOV data.
 
-### Section 4: PolSAR Tutorials
-Notebooks focusing on NISAR GCOV covariance channels.
+#### Section 2c: GCOV Backscatter Tutorials
+Notebooks focusing on NISAR GCOV backscatter.
 
-### Section 5: Additional NISAR Resources
+### Section 3: Additional NISAR Resources
 Links to additional NISAR and NISAR GCOV resources.
 
-### Section 6: Contibute to the NISAR GCOV Cookbook
+### Section 4: Contibute to the NISAR Cookbook
 We welcome contributions! Learn how to raise issues, make updates, and add content to this cookbook.
 
 ## Running the Notebooks

@@ -11,6 +11,9 @@
     <loc>http://localhost:3000/notebooks/set-up-earthdata-login</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/nisar-data-access</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/gcov-intro</loc>
   </url>
   <url>
@@ -21,9 +24,6 @@
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/search-nisar-gcov-earthaccess</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/nisar-data-access</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/opening-hdf5-python</loc>

@@ -16,6 +16,7 @@ project:
       children:
         - file: notebooks/software_environment_docker.ipynb
         - file: notebooks/set_up_Earthdata_Login.md
+    - file: notebooks/NISAR_data_access.ipynb
     - title: GCOV
       children: 
       - file: notebooks/GCOV_intro.md

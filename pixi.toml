@@ -36,6 +36,8 @@ python = "==3.13"
 h5netcdf = ">=1.8.1,<2"
 zarr = ">=3.1.5,<4"
 folium = ">=0.20.0,<0.21"
+hvplot = ">=0.12.2,<0.13"
+geoviews = ">=1.15.1,<2"
 
 [environments]
 default = ["base"]

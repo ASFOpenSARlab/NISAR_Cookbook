@@ -39,8 +39,8 @@ project:
       - title: GCOV PolSAR Tutorials
     - title: RSLC
     - title: GSLC
-        children:
-          - file: notebooks/GSLC_Interferogram.ipynb
+      children:
+        - file: notebooks/GSLC_Interferogram.ipynb
     - title: GUNW
     - title: Additional NISAR Resources
       children:

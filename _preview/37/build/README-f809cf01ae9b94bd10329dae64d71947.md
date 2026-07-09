@@ -80,7 +80,7 @@ You can run the notebooks on a Jupyter Hub such as [OpenSARLab](https://openscie
 
 If you are interested in running this material locally on your computer, you will need to follow this workflow:
 
-1. Clone the `https://github.com/ProjectPythia/cookbook-example` repository:
+1. Clone the `https://github.com/ASFOpenSARlab/NISAR_Cookbook` repository:
 
    ```bash
     git clone https://github.com/ASFOpenSARlab/NISAR_Cookbook.git

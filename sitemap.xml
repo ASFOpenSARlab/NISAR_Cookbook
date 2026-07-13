@@ -14,6 +14,9 @@
     <loc>http://localhost:3000/notebooks/nisar-data-access</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/search-stream-nisar-asf-search</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/gcov-intro</loc>
   </url>
   <url>

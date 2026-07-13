@@ -38,6 +38,7 @@ h5netcdf = ">=1.8.1,<2"
 zarr = ">=3.1.5,<4"
 folium = ">=0.20.0,<0.21"
 ipyfilechooser = ">=0.6.0,<0.7"
+ipyleaflet = ">=0.20.0,<0.21"
 
 [environments]
 default = ["base"]

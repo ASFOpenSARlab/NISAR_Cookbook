@@ -186,16 +186,42 @@ def compute_cloude_pottier(gslc_file_path, window_size=5, aoi_window=None):
 
     return H, mean_alpha_deg
 
-
 def classify_cloude_pottier(H, alpha_deg, apply_filter=True):
     '''
-    Assign each pixel to one of nine H/alpha scattering zones (Cloude & Pottier, 1997),
-    adapted for dual-pol data with slightly relaxed entropy thresholds.
+    Assign each pixel to one of nine H/alpha scattering zones using the
+    dual-pol optimal dividing lines empirically derived for HH-HV SAR by
+    Ji & Wu (2015, Table 2), rather than the classical full-polarimetric
+    Cloude & Pottier (1997) thresholds (H = 0.5/0.9, alpha = 42.5/47.5),
+    which are not valid outside the full-pol [T3] feasible region.
 
-    Zone layout (entropy x alpha):
-        High-H (>0.8):  Z1 double-bounce | Z2 volume      | Z3 surface
-        Med-H (0.5-0.8): Z4 double-bounce | Z5 volume      | Z6 surface
-        Low-H (<0.5):    Z7 double-bounce | Z8 dipole      | Z9 surface/water
+    Zone layout matches Ji & Wu (2015), Figure 1 (Z1 = lowest entropy/alpha,
+    Z9 = highest entropy/alpha), NOT the earlier ad hoc numbering of this
+    module:
+        Low H  (< l1=0.66):        Z1 surface | Z2 dipole | Z3 multiple
+        Medium H (l1-l2=0.66-0.93): Z4 surface | Z5 dipole | Z6 multiple
+        High H (> l2=0.93):                    Z8 dipole | Z9 multiple
+
+    Two caveats documented experimentally in Ji & Wu (2015) for HH-HV SAR:
+
+    1. Z2 (low-entropy dipole) does not exist: the optimal boundary between
+       Z1/Z2 (l3=33.5 deg) lies ABOVE the Z2/Z3 boundary (l4=31.3 deg), i.e.
+       the two lines are inverted relative to the full-pol case, so there is
+       no alpha band that resolves as "Z2 only". Pixels below the crossover
+       (~32.4 deg) are assigned Z1, above it Z3, and Z2 is never populated.
+    2. The high-entropy Z7/Z8 boundary is not resolvable for HH-HV SAR (Ji &
+       Wu, 2015 give only l7=50.2 deg for the Z8/Z9 boundary; no dividing
+       line for Z7/Z8 achieves an acceptable retention ratio). Z7 is
+       therefore merged into Z8 here and left unpopulated, rather than
+       drawn at an arbitrary, unvalidated angle.
+
+    Even with these optimal lines, Ji & Wu (2015, Table 3) report that
+    HH-HV SAR only retains ~29% of the scattering-mechanism labels that a
+    fully polarimetric [T3] decomposition would assign (vs. ~68% for
+    HH-VV) -- co-polarization is what actually separates surface, dipole,
+    and dihedral scattering; HH-HV alone provides much weaker separation.
+    See Section 1b of this notebook and `hhhv_canonical_scatterers()` for
+    the underlying reason: the three canonical scattering mechanisms
+    project onto the SAME point in the HH-HV H-alpha plane.
 
     Parameters
     ----------
@@ -205,27 +231,29 @@ def classify_cloude_pottier(H, alpha_deg, apply_filter=True):
 
     Returns
     -------
-    zones : ndarray (2-D, uint8), labels 0 (background) to 9
+    zones : ndarray (2-D, uint8), labels 0 (background) to 9 (Z7 unused)
     '''
-    print("Classifying pixels into 9 H/alpha zones...")
+    print("Classifying pixels into 9 H/alpha zones (Ji & Wu 2015 HH-HV dividing lines)...")
     zones = np.zeros_like(H, dtype=np.uint8)
 
-    low_h  = H < 0.5
-    med_h  = (H >= 0.5) & (H <= 0.8)
-    high_h = H > 0.8
-    surf_a = alpha_deg < 25.0
-    vol_a  = (alpha_deg >= 25.0) & (alpha_deg <= 50.0)
-    db_a   = alpha_deg > 50.0
+    # Table 2 (Ji & Wu, 2015), HH-VV/HH-HV/HV-VV row for HH-HV.
+    l1, l2 = 0.66, 0.93                      # low/medium, medium/high entropy
+    l3, l4 = 33.5, 31.3                      # Z1/Z2, Z2/Z3 (inverted -> Z2 empty)
+    l5, l6 = 38.1, 48.4                      # Z4/Z5, Z5/Z6
+    l7     = 50.2                            # Z8/Z9 (Z7/Z8 not resolvable -> Z7 merged into Z8)
+    z1z3_crossover = (l3 + l4) / 2.0         # ~32.4 deg: single split replacing the degenerate Z2 band
 
-    zones[high_h & db_a]   = 1
-    zones[high_h & vol_a]  = 2
-    zones[high_h & surf_a] = 3
-    zones[med_h  & db_a]   = 4
-    zones[med_h  & vol_a]  = 5
-    zones[med_h  & surf_a] = 6
-    zones[low_h  & db_a]   = 7
-    zones[low_h  & vol_a]  = 8
-    zones[low_h  & surf_a] = 9
+    low_h  = H < l1
+    med_h  = (H >= l1) & (H <= l2)
+    high_h = H > l2
+
+    zones[low_h  & (alpha_deg <  z1z3_crossover)] = 1   # Z1: low-H surface
+    zones[low_h  & (alpha_deg >= z1z3_crossover)] = 3   # Z3: low-H multiple (Z2 does not exist)
+    zones[med_h  & (alpha_deg <  l5)]             = 4   # Z4: medium-H surface
+    zones[med_h  & (alpha_deg >= l5) & (alpha_deg < l6)] = 5  # Z5: medium-H dipole
+    zones[med_h  & (alpha_deg >= l6)]             = 6   # Z6: medium-H multiple
+    zones[high_h & (alpha_deg <  l7)]             = 8   # Z8: high-H dipole (Z7 merged in)
+    zones[high_h & (alpha_deg >= l7)]             = 9   # Z9: high-H multiple
     zones[~np.isfinite(H) | ~np.isfinite(alpha_deg)] = 0
 
     if apply_filter and _CV2_AVAILABLE:

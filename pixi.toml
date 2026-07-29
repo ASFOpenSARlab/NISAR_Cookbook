@@ -38,6 +38,13 @@ h5netcdf = ">=1.8.1,<2"
 zarr = ">=3.1.5,<4"
 folium = ">=0.20.0,<0.21"
 ipyfilechooser = ">=0.6.0,<0.7"
+hdf5plugin = "*"
+rasterio = "*"
+pyproj = "*"
+scipy = "*"
+
+[feature.isce3.pypi-dependencies]
+opencv-python = "*"
 
 [environments]
 default = ["base"]

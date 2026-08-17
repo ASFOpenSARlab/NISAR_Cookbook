@@ -39,7 +39,9 @@ zarr = ">=3.1.5,<4"
 folium = ">=0.20.0,<0.21"
 ipyfilechooser = ">=0.6.0,<0.7"
 ipyleaflet = ">=0.20.0,<0.21"
-polsartools = ">=0.12.1,<0.13"
+
+[feature.isce3.pypi-dependencies]
+polsartools = "*"
 
 [environments]
 default = ["base"]

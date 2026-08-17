@@ -40,6 +40,9 @@ folium = ">=0.20.0,<0.21"
 ipyfilechooser = ">=0.6.0,<0.7"
 ipyleaflet = ">=0.20.0,<0.21"
 
+[feature.isce3.pypi-dependencies]
+polsartools = "*"
+
 [environments]
 default = ["base"]
 isce3 = ["isce3"]

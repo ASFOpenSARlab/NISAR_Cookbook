@@ -670,8 +670,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/anyio-4.13.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/argon2-cffi-25.1.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/arrow-1.4.0-pyhcf101f3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-12.1.1-pyhd8ed1ab_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-12.1.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-13.0.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-13.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/asttokens-3.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/async-lru-2.3.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/attrs-26.1.0-pyhcf101f3_0.conda
@@ -849,8 +849,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/appnope-0.1.4-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/argon2-cffi-25.1.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/arrow-1.4.0-pyhcf101f3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-12.1.1-pyhd8ed1ab_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-12.1.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-13.0.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-13.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/asttokens-3.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/async-lru-2.3.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/attrs-26.1.0-pyhcf101f3_0.conda
@@ -1209,8 +1209,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/appnope-0.1.4-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/argon2-cffi-25.1.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/arrow-1.4.0-pyhcf101f3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-12.1.1-pyhd8ed1ab_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-12.1.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-13.0.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-13.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/asttokens-3.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/async-lru-2.3.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/attrs-26.1.0-pyhcf101f3_0.conda
@@ -4427,30 +4427,32 @@ packages:
   license_family: APACHE
   size: 113854
   timestamp: 1760831179410
-- conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-12.1.1-pyhd8ed1ab_0.conda
-  sha256: 076b5b6c5a3729165ecee676b2efdcc1ae465b432d3419fd5c5faed1a61c37cf
-  md5: 6a5e840b2acf879ac77ff210559bf518
+- conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-13.0.1-pyhd8ed1ab_0.conda
+  sha256: b9072defda75182427afac3d98cc20be8696341153c806d33d474178b252a01c
+  md5: fa04b675aad34639fa0a28497aa4bb75
   depends:
-  - asf_search-base >=12.1.1,<12.1.2.0a0
-  - python >=3.10
+  - asf_search-base >=13.0.1,<13.0.2.0a0
+  - python >=3.11
   - remotezip >=0.10.0
-  size: 7003
-  timestamp: 1778874147032
-- conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-12.1.1-pyhd8ed1ab_0.conda
-  sha256: 9e1ddc11ac2a535a5a611fe08eabf1681f1bdc4b459005785ba1a456e1a4e4c1
-  md5: 106444362f65c836f91f930889677c57
+  run_exports: {}
+  size: 7254
+  timestamp: 1788481182413
+- conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-13.0.1-pyhd8ed1ab_0.conda
+  sha256: 12c7dfe549338ed4f7645089b13690aaa092550c690ba7459e1eba7e0dd9c4fd
+  md5: 0467ca269a31d0b7385e4b699e6a10db
   depends:
   - ciso8601
   - dateparser
   - importlib-metadata
   - numpy
-  - python >=3.10
+  - python >=3.11
   - pytz
   - requests
   - shapely
   - tenacity 8.2.2
-  size: 88864
-  timestamp: 1778874142049
+  run_exports: {}
+  size: 93834
+  timestamp: 1788481176760
 - conda: https://conda.anaconda.org/conda-forge/noarch/asttokens-3.0.1-pyhd8ed1ab_0.conda
   sha256: ee4da0f3fe9d59439798ee399ef3e482791e48784873d546e706d0935f9ff010
   md5: 9673a61a297b00016442e022d689faa6

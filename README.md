@@ -114,3 +114,10 @@ If you are interested in running this material locally on your computer, you wil
     ```
     pixi run -e isce3 lab
     ```
+
+    :::{tip} Navigate the NISAR Cookbook from its table of contents
+
+    Click the "JB" tab on the left-hand sidebar if you wish to navigate the NISAR Cookbook using a table of contents instead of the file browser.
+
+    This feature is provided by the [jb-toc](https://pypi.org/project/jb-toc/) JupyterLab extension.
+    :::

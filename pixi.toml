@@ -44,6 +44,6 @@ ipyleaflet = ">=0.20.0,<0.21"
 default = ["base"]
 isce3 = ["isce3"]
 
-[tasks]
+[feature.isce3.tasks]
 register-kernel = "python -m ipykernel install --user --name isce3 --display-name 'isce3 (Python)'"
 lab = { cmd = "jupyter lab", depends-on = ["register-kernel"] }

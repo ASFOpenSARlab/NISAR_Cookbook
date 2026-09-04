@@ -76,7 +76,7 @@ We welcome contributions! Learn how to raise issues, make updates, and add conte
 
 You can run the notebooks on a JupyterHub such as [OpenSARLab](https://opensciencelab.asf.alaska.edu/) or on your local machine.
 
-### (Option 1) Run in OpenSARLab or on another JupyterHub that supports user-installable Pixi environments
+### (Option 1) Run in OpenSARLab or on Another JupyterHub Supporting User-Installable Pixi Environments
 
 1. [Sign up for an OpenScienceLab account and request access to OpenSARLab.](https://docs.google.com/presentation/d/1Iy16v_Yq884DINSBLAxMk9jEYxPDFKELABZfbpsbaq4/edit?usp=sharing)
 

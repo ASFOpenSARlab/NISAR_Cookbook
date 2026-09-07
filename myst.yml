@@ -1,7 +1,5 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
-extends:
-  - https://raw.githubusercontent.com/ASFOpenSARlab/asf-myst-config/main/asf_myst.yml
 project:
   title: NISAR Cookbook
   github: https://github.com/ASFOpenSARlab/NISAR_Cookbook

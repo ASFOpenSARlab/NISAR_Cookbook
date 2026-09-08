@@ -17,40 +17,50 @@ def subset_h5(input_file, aoi):
 
     output_file = output_dir / f"{input_file.stem}_subset.h5"
 
-    # Find NISAR coordinate system
+    # Find NISAR coordinate systems
     with h5py.File(input_file, "r") as src:
-        coord_path = _get_coord_path(src)
-        coords = src[coord_path]
+        coord_paths = _get_coord_paths(src)
 
-        x = coords["xCoordinates"][:]
-        y = coords["yCoordinates"][:]
-        epsg = int(coords["projection"][()])
+        grid_info = {}
 
-    # Convert WKT AOI lat/lon coordinates to the NISAR projection 
-    transformer = Transformer.from_crs(
-        "EPSG:4326",
-        f"EPSG:{epsg}",
-        always_xy=True,
-    )
+        for coord_path in coord_paths:
+            coords = src[coord_path]
 
-    geom = transform(
-        transformer.transform,
-        wkt.loads(aoi),
-    )
+            x = coords["xCoordinates"][:]
+            y = coords["yCoordinates"][:]
+            epsg = int(coords["projection"][()])
 
-    west, south, east, north = geom.bounds
+            # Convert WKT AOI lat/lon coordinates to the NISAR projection 
+            transformer = Transformer.from_crs(
+                "EPSG:4326",
+                f"EPSG:{epsg}",
+                always_xy=True,
+            )
 
-    # Find the pixel rows and columns that exist within AOI
-    x_idx = np.where((x >= west) & (x <= east))[0]
-    y_idx = np.where((y >= south) & (y <= north))[0]
+            geom = transform(
+                transformer.transform,
+                wkt.loads(aoi),
+            )
 
-    if x_idx.size == 0 or y_idx.size == 0:
+            west, south, east, north = geom.bounds
+
+            # Find the pixel rows and columns that exist within AOI
+            x_idx = np.where((x >= west) & (x <= east))[0]
+            y_idx = np.where((y >= south) & (y <= north))[0]
+
+            if x_idx.size == 0 or y_idx.size == 0:
+                continue
+
+            grid_info[coord_path] = {
+                "x_slice": slice(x_idx.min(), x_idx.max() + 1),
+                "y_slice": slice(y_idx.min(), y_idx.max() + 1),
+                "grid_shape": (len(y), len(x)),
+            }
+
+    if not grid_info:
         raise ValueError(
             "The AOI is not located within the selected NISAR scene."
         )
-
-    x_slice = slice(x_idx.min(), x_idx.max() + 1)
-    y_slice = slice(y_idx.min(), y_idx.max() + 1)
 
     if output_file.exists():
         output_file.unlink()
@@ -60,44 +70,40 @@ def subset_h5(input_file, aoi):
         _copy_subset(
             src,
             dst,
-            coord_path,
-            x_slice,
-            y_slice,
-            (len(y), len(x)),
+            grid_info,
         )
 
     return output_file
 
-# Get the coordinate path for any geocoded NISAR HDF5 file 
-def _get_coord_path(h5_file):
+
+# Get the coordinate paths for NISAR GSLC grids
+def _get_coord_paths(h5_file):
 
     coord_paths = []
 
     def find_coords(name, item):
         if (
             isinstance(item, h5py.Group)
+            and "/grids/frequency" in f"/{name}"
             and "xCoordinates" in item
             and "yCoordinates" in item
             and "projection" in item
         ):
             coord_paths.append(f"/{name}")
-            
-    # Visititems() searches all groups for matching criteria (xCoordinates, yCoordinates, projection)
+
     h5_file.visititems(find_coords)
 
     if not coord_paths:
         raise ValueError("No coordinate datasets were found")
 
-    return coord_paths[0]
+    return coord_paths
+
 
 # Copy the HDF5 structure and subset
 def _copy_subset(
     src,
     dst,
-    coord_path,
-    x_slice,
-    y_slice,
-    grid_shape,
+    grid_info,
     path="",
 ):
 
@@ -114,41 +120,53 @@ def _copy_subset(
             _copy_subset(
                 item,
                 group,
-                coord_path,
-                x_slice,
-                y_slice,
-                grid_shape,
+                grid_info,
                 item_path,
             )
 
         elif isinstance(item, h5py.Dataset):
 
-            if item_path == f"{coord_path}/xCoordinates":
-                data = item[x_slice]
+            subsetted = False
 
-            elif item_path == f"{coord_path}/yCoordinates":
-                data = item[y_slice]
+            for coord_path, info in grid_info.items():
 
-            elif (
-                item_path.startswith(coord_path)
-                and item.ndim >= 2
-                and item.shape[-2:] == grid_shape
-            ):
-                leading = (slice(None),) * (item.ndim - 2)
-                data = item[leading + (y_slice, x_slice)]
+                x_slice = info["x_slice"]
+                y_slice = info["y_slice"]
+                grid_shape = info["grid_shape"]
+
+                if item_path == f"{coord_path}/xCoordinates":
+                    data = item[x_slice]
+                    subsetted = True
+                    break
+
+                elif item_path == f"{coord_path}/yCoordinates":
+                    data = item[y_slice]
+                    subsetted = True
+                    break
+
+                elif (
+                    item_path.startswith(coord_path)
+                    and item.ndim >= 2
+                    and item.shape[-2:] == grid_shape
+                ):
+                    leading = (slice(None),) * (item.ndim - 2)
+                    data = item[leading + (y_slice, x_slice)]
+                    subsetted = True
+                    break
+
+            if subsetted:
+                new_item = dst.create_dataset(
+                    name,
+                    data=data,
+                    dtype=item.dtype,
+                )
+
+                # Copy dataset attributes
+                for attr, value in item.attrs.items():
+                    new_item.attrs[attr] = value
 
             else:
-                data = item[()]
-
-            new_item = dst.create_dataset(
-                name,
-                data=data,
-                dtype=item.dtype,
-            )
-
-            # Copy dataset attributes
-            for attr, value in item.attrs.items():
-                new_item.attrs[attr] = value
+                src.copy(item, dst, name=name)
 
         elif isinstance(item, h5py.Datatype):
             dst[name] = item.dtype

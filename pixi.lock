@@ -672,8 +672,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/anyio-4.13.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/argon2-cffi-25.1.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/arrow-1.4.0-pyhcf101f3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-12.1.1-pyhd8ed1ab_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-12.1.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-13.0.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-13.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/asttokens-3.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/async-lru-2.3.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/attrs-26.1.0-pyhcf101f3_0.conda
@@ -840,6 +840,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/zarr-3.2.1-pyhc364b38_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zict-3.0.0-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/zipp-4.1.0-pyhcf101f3_0.conda
+<<<<<<< HEAD
       - pypi: https://files.pythonhosted.org/packages/07/f8/41db9de19d7987d6b04715a02b3b40aea467000275d9d758ffaa31af7d50/pydantic_core-2.46.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/21/91/d8f19f0b8fc9c5585b50fda44c05415da0bdc5fa9c9c69011015dac27880/ndindex-1.10.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/23/e7/9a19ffa77131895da2da62b8cb8d3995f0b8853eae24101efc4590d6aa06/polsartools-0.12.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
@@ -862,6 +863,11 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/dd/d4/1003cc9cc35aad4d56a68f5ffeb26baa4a235b8eb6c0d1ce9b143bece462/numexpr-2.14.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/e0/a9/023730ba63db1e494a271cb018dcd361bd2c917ba7004c3e49d5daf795a2/py_cpuinfo-9.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/fd/7b/122376b1fd3c62c1ed9dc80c931ace4844b3c55407b6fb2d199377c9736f/pydantic-2.13.4-py3-none-any.whl
+=======
+      - pypi: https://files.pythonhosted.org/packages/41/ff/9f255212c0b3636fb26edd15c0084c4855c8328843c0feeba06ecda395b7/jupyter_server_globbing-0.1.6-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/4e/f3/3803e7daff1ff25987835c439dc66a9ef1c7936cb302432975edbceb6d51/jb_toc_frontend-2.0.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/84/d2/5f066e0ee9b3de4687ca12ed75b0900e105aa8ca541fe6cb9c3c2892791d/jb_toc-2.0.1-py3-none-any.whl
+>>>>>>> origin/main
       osx-64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/_python_abi3_support-1.0-hd8ed1ab_2.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/affine-2.4.0-pyhd8ed1ab_1.conda
@@ -873,8 +879,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/appnope-0.1.4-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/argon2-cffi-25.1.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/arrow-1.4.0-pyhcf101f3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-12.1.1-pyhd8ed1ab_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-12.1.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-13.0.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-13.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/asttokens-3.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/async-lru-2.3.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/attrs-26.1.0-pyhcf101f3_0.conda
@@ -1222,6 +1228,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-64/zlib-1.3.2-hbb4bfdb_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/zlib-ng-2.3.3-h8bce59a_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/zstd-1.5.7-h3eecb57_6.conda
+<<<<<<< HEAD
       - pypi: https://files.pythonhosted.org/packages/2e/60/74ea344b3b003fada346ed98a6899085d6fd4c777df608992d90c458fda6/cftime-1.6.5-cp313-cp313-macosx_10_13_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/32/d5/f9a850d79b0851d1d4ef6456097579a9005b31fea68726a4ae5f2d82ddd9/threadpoolctl-3.6.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/33/fd/8762f7ee3e4e4be6d1d846cffb4916dd9bb02b2f800d3603718a0efe494c/pybind11-3.1.0-py3-none-any.whl
@@ -1244,6 +1251,11 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/e0/a9/023730ba63db1e494a271cb018dcd361bd2c917ba7004c3e49d5daf795a2/py_cpuinfo-9.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/fa/bb/4a9cde6628563388db26fa86c64adb0f2475a757e72af0ec185fd520b72f/tables-3.11.1-cp311-abi3-macosx_10_9_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/fd/7b/122376b1fd3c62c1ed9dc80c931ace4844b3c55407b6fb2d199377c9736f/pydantic-2.13.4-py3-none-any.whl
+=======
+      - pypi: https://files.pythonhosted.org/packages/41/ff/9f255212c0b3636fb26edd15c0084c4855c8328843c0feeba06ecda395b7/jupyter_server_globbing-0.1.6-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/4e/f3/3803e7daff1ff25987835c439dc66a9ef1c7936cb302432975edbceb6d51/jb_toc_frontend-2.0.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/84/d2/5f066e0ee9b3de4687ca12ed75b0900e105aa8ca541fe6cb9c3c2892791d/jb_toc-2.0.1-py3-none-any.whl
+>>>>>>> origin/main
       osx-arm64:
       - conda: https://conda.anaconda.org/conda-forge/noarch/_python_abi3_support-1.0-hd8ed1ab_2.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/affine-2.4.0-pyhd8ed1ab_1.conda
@@ -1255,8 +1267,8 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/appnope-0.1.4-pyhd8ed1ab_1.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/argon2-cffi-25.1.0-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/arrow-1.4.0-pyhcf101f3_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-12.1.1-pyhd8ed1ab_0.conda
-      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-12.1.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-13.0.1-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-13.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/asttokens-3.0.1-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/async-lru-2.3.0-pyhcf101f3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/attrs-26.1.0-pyhcf101f3_0.conda
@@ -1604,6 +1616,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-1.3.2-h8088a28_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zlib-ng-2.3.3-hed4e4f5_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.7-hbf9d68e_6.conda
+<<<<<<< HEAD
       - pypi: https://files.pythonhosted.org/packages/1e/14/adb293ac6127079b49ff11c05cf3d5ce5c1f17d097f326dc02d74ddfcb6e/cftime-1.6.5-cp313-cp313-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/32/d5/f9a850d79b0851d1d4ef6456097579a9005b31fea68726a4ae5f2d82ddd9/threadpoolctl-3.6.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/33/fd/8762f7ee3e4e4be6d1d846cffb4916dd9bb02b2f800d3603718a0efe494c/pybind11-3.1.0-py3-none-any.whl
@@ -1626,6 +1639,11 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/e0/a9/023730ba63db1e494a271cb018dcd361bd2c917ba7004c3e49d5daf795a2/py_cpuinfo-9.0.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/f4/ab/25f29f521f70069860d1e4c3d31af23241f9773039b8d6be946b36d1e42a/polsartools-0.12.1-cp313-cp313-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/fd/7b/122376b1fd3c62c1ed9dc80c931ace4844b3c55407b6fb2d199377c9736f/pydantic-2.13.4-py3-none-any.whl
+=======
+      - pypi: https://files.pythonhosted.org/packages/41/ff/9f255212c0b3636fb26edd15c0084c4855c8328843c0feeba06ecda395b7/jupyter_server_globbing-0.1.6-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/4e/f3/3803e7daff1ff25987835c439dc66a9ef1c7936cb302432975edbceb6d51/jb_toc_frontend-2.0.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/84/d2/5f066e0ee9b3de4687ca12ed75b0900e105aa8ca541fe6cb9c3c2892791d/jb_toc-2.0.1-py3-none-any.whl
+>>>>>>> origin/main
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
   build_number: 20
@@ -4741,33 +4759,48 @@ packages:
   - pkg:pypi/arrow?source=hash-mapping
   size: 113854
   timestamp: 1760831179410
-- conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-12.1.1-pyhd8ed1ab_0.conda
-  sha256: 076b5b6c5a3729165ecee676b2efdcc1ae465b432d3419fd5c5faed1a61c37cf
-  md5: 6a5e840b2acf879ac77ff210559bf518
+- conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-13.0.1-pyhd8ed1ab_0.conda
+  sha256: b9072defda75182427afac3d98cc20be8696341153c806d33d474178b252a01c
+  md5: fa04b675aad34639fa0a28497aa4bb75
   depends:
-  - asf_search-base >=12.1.1,<12.1.2.0a0
-  - python >=3.10
+  - asf_search-base >=13.0.1,<13.0.2.0a0
+  - python >=3.11
   - remotezip >=0.10.0
   purls: []
+<<<<<<< HEAD
   size: 7003
   timestamp: 1778874147032
 - conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-12.1.1-pyhd8ed1ab_0.conda
   sha256: 9e1ddc11ac2a535a5a611fe08eabf1681f1bdc4b459005785ba1a456e1a4e4c1
   md5: 106444362f65c836f91f930889677c57
+=======
+  run_exports: {}
+  size: 7254
+  timestamp: 1788481182413
+- conda: https://conda.anaconda.org/conda-forge/noarch/asf_search-base-13.0.1-pyhd8ed1ab_0.conda
+  sha256: 12c7dfe549338ed4f7645089b13690aaa092550c690ba7459e1eba7e0dd9c4fd
+  md5: 0467ca269a31d0b7385e4b699e6a10db
+>>>>>>> origin/main
   depends:
   - ciso8601
   - dateparser
   - importlib-metadata
   - numpy
-  - python >=3.10
+  - python >=3.11
   - pytz
   - requests
   - shapely
   - tenacity 8.2.2
   purls:
   - pkg:pypi/asf-search?source=hash-mapping
+<<<<<<< HEAD
   size: 88864
   timestamp: 1778874142049
+=======
+  run_exports: {}
+  size: 93834
+  timestamp: 1788481176760
+>>>>>>> origin/main
 - conda: https://conda.anaconda.org/conda-forge/noarch/asttokens-3.0.1-pyhd8ed1ab_0.conda
   sha256: ee4da0f3fe9d59439798ee399ef3e482791e48784873d546e706d0935f9ff010
   md5: 9673a61a297b00016442e022d689faa6
@@ -12692,6 +12725,7 @@ packages:
   purls: []
   size: 433413
   timestamp: 1764777166076
+<<<<<<< HEAD
 - pypi: https://files.pythonhosted.org/packages/07/f8/41db9de19d7987d6b04715a02b3b40aea467000275d9d758ffaa31af7d50/pydantic_core-2.46.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
   name: pydantic-core
   version: 2.46.4
@@ -13407,3 +13441,28 @@ packages:
   - email-validator>=2.0.0 ; extra == 'email'
   - tzdata ; python_full_version >= '3.9' and sys_platform == 'win32' and extra == 'timezone'
   requires_python: '>=3.9'
+=======
+- pypi: https://files.pythonhosted.org/packages/41/ff/9f255212c0b3636fb26edd15c0084c4855c8328843c0feeba06ecda395b7/jupyter_server_globbing-0.1.6-py3-none-any.whl
+  name: jupyter-server-globbing
+  version: 0.1.6
+  sha256: 223254d76373eabc65279989e40251af7e79491edde048e1ab3d0a2c18870a74
+- pypi: https://files.pythonhosted.org/packages/4e/f3/3803e7daff1ff25987835c439dc66a9ef1c7936cb302432975edbceb6d51/jb_toc_frontend-2.0.1-py3-none-any.whl
+  name: jb-toc-frontend
+  version: 2.0.1
+  sha256: 54660a25e3c8151327a598cc1926d3142ccbdf90e2b9659b3ffa7f33fb6df990
+  requires_python: '>=3.10'
+- pypi: https://files.pythonhosted.org/packages/84/d2/5f066e0ee9b3de4687ca12ed75b0900e105aa8ca541fe6cb9c3c2892791d/jb_toc-2.0.1-py3-none-any.whl
+  name: jb-toc
+  version: 2.0.1
+  sha256: b1eb5268581c224bf77b5083888747734614a4d916ff3e71beba9d380adbf6c9
+  requires_dist:
+  - jb-toc-frontend==2.0.1
+  - jupyter-server-globbing
+  - jupyter-server>=2.0.0
+  - coverage ; extra == 'test'
+  - pytest ; extra == 'test'
+  - pytest-asyncio ; extra == 'test'
+  - pytest-cov ; extra == 'test'
+  - pytest-jupyter[server]>=0.6.0 ; extra == 'test'
+  requires_python: '>=3.10'
+>>>>>>> origin/main

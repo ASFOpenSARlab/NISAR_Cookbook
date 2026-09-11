@@ -74,13 +74,32 @@ We welcome contributions! Learn how to raise issues, make updates, and add conte
 
 ## Running the Notebooks
 
-You can run the notebooks on a Jupyter Hub such as [OpenSARLab](https://opensciencelab.asf.alaska.edu/) or on your local machine.
+You can run the notebooks on a JupyterHub such as [OpenSARLab](https://opensciencelab.asf.alaska.edu/) or on your local machine.
 
-### Running on Your Own Machine
+### (Option 1) Run in OpenSARLab or on Another JupyterHub Supporting User-Installable Pixi Environments
+
+1. [Sign up for an OpenScienceLab account and request access to OpenSARLab.](https://docs.google.com/presentation/d/1Iy16v_Yq884DINSBLAxMk9jEYxPDFKELABZfbpsbaq4/edit?usp=sharing)
+
+1. Navigate to `~/Data_Recipe_Jupyter_Books/NISAR_Cookbook` to explore and  execute the notebooks.
+
+### (Option 2) Run on Your Own Machine
 
 If you are interested in running this material locally on your computer, you will need to follow this workflow:
 
-1. Clone the `https://github.com/ProjectPythia/cookbook-example` repository:
+1. Install `Pixi` using one of the following options if not already installed:
+    - **macOS / Linux**:
+    ```bash
+        curl -fsSL https://pixi.sh/install.sh | bash
+    ```
+    - **Windows (PowerShell)**:
+    ```powershell
+    iwr -useb https://pixi.sh/install.ps1 | iex
+    ```
+    - **Download the [pixi installer](https://pixi.prefix.dev/latest/installation/)**
+
+1. Restart your terminal after installing `Pixi` so it is on your PATH.
+
+1. Clone the `https://github.com/ASFOpenSARlab/NISAR_Cookbook` repository:
 
    ```bash
     git clone https://github.com/ASFOpenSARlab/NISAR_Cookbook.git
@@ -90,10 +109,15 @@ If you are interested in running this material locally on your computer, you wil
    ```bash
    cd NISAR_Cookbook
    ```
-1. Move into the `notebooks` directory and start up Jupyterlab (requires that Jupyter Lab is installed)
-   ```bash
-   cd notebooks/
-   jupyter lab
-   ```
-1. Run the `create_software_environment.ipynb` notebook to install the software environment needed to run the remaining notebooks in the cookbook.
-1. Run additional cookbook notebooks. 
+1. Install the `Pixi` environment needed to execute the notebooks and launch JupyterLab with a single command:
+
+    ```
+    pixi run -e isce3 lab
+    ```
+
+    :::{tip} Navigate the NISAR Cookbook from its table of contents
+
+    Click the "JB" tab on the left-hand sidebar if you wish to navigate the NISAR Cookbook using a table of contents instead of the file browser.
+
+    This feature is provided by the [jb-toc](https://pypi.org/project/jb-toc/) JupyterLab extension.
+    :::

@@ -47,6 +47,9 @@
     <loc>http://localhost:3000/gslc-interferogram</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/gslc-basic-polsartools</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/contributing</loc>
   </url>
   <url>

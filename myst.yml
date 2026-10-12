@@ -43,6 +43,7 @@ project:
       children:
         - file: notebooks/GSLC_Interferogram.ipynb
         - file: notebooks/GSLC_Basic_PolSARtools.ipynb
+        - file: notebooks/GSLC_polSAR_vegetation.ipynb
     - title: GUNW
     - title: Additional NISAR Resources
       children:

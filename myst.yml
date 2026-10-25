@@ -70,7 +70,7 @@ project:
       children:
       - file: CONTRIBUTING.md
       - file: notebooks/notebook-template.ipynb
-    https://www.edx.org/learn/data-analysis/university-of-alaska-fairbanks-synthetic-aperture-radar-foundations
+
   # jupyter:
   #   binder:
   #     url: "https://mybinder.org"

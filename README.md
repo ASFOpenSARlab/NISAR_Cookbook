@@ -12,16 +12,15 @@
 
 :::{warning} This Cookbook is under active development
 
-The workflows in this Cookbook were initially created using proxy NISAR test data, available here:
-[https://science.nasa.gov/mission/nisar/sample-data/](https://science.nasa.gov/mission/nisar/sample-data/)
-
-Some workflows have been updated to use newly available production NISAR data, others have not. Those still needing work have been temporarily removed from the table of contents but remain in the repository.
+Notebooks are currently being updated to utilize NISAR provisional data. Notebooks still needing work have been temporarily removed from the table of contents but remain in the repository.
 
 Upcoming cookbook goals include:
-- more GCOV backscatter notebooks
-- GCOV PolSAR notebooks
-- GSLC notebooks (custom InSAR generation)
+- Subsetting NISAR RSLCs 
+- Ionospheric phase delay notebooks
 - GUNW notebooks
+- Multi-temporal RGB composite notebooks
+- InSAR coherence RGB notebooks
+- Specific application-focused notebooks: floods, snow, glaciology, earthquakes, and more
 
 We welcome [community contributions](contribute)!
 :::
@@ -54,22 +53,19 @@ This project is open source and open development. See the [contributor's guide](
 ### Section 1: Cookbook Set Up
 Gain access to the data and set up required software environments for the included workflows.
 
-### Section 2: GCOV
-Learn how to search, access, and work with GCOV data.
+### Section 2: NISAR data access
+Learn how to search, access, and work with NISAR data.
 
-#### Section 2a: GCOV Data Access
-Learn how to search and download GCOV data.
+### Section 3: NISAR GCOV Data 
+Learn how to access, load, manipulate, visualize, and analyze NISAR GCOV data.
 
-#### Section 2b: GCOV Data Loading, Manipulation, and Visualization
-Learn how to load, work with, and create visualizations with GCOV data.
+### Section 4: NISAR GSLC Data
+Learn how to create interferograms and conduct various polSAR analyses with NISAR GSLC data.
 
-#### Section 2c: GCOV Backscatter Tutorials
-Notebooks focusing on NISAR GCOV backscatter.
+### Section 5: Additional NISAR resources 
+Links to additional NISAR resources.
 
-### Section 3: Additional NISAR Resources
-Links to additional NISAR and NISAR GCOV resources.
-
-### Section 4: Contibute to the NISAR Cookbook
+### Section 6: Contibute to the NISAR Cookbook
 We welcome contributions! Learn how to raise issues, make updates, and add content to this cookbook.
 
 ## Running the Notebooks

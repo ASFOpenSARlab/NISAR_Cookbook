@@ -50,6 +50,9 @@
     <loc>http://localhost:3000/gslc-basic-polsartools</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/gslc-polsar-vegetation</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/contributing</loc>
   </url>
   <url>

@@ -57,11 +57,21 @@ project:
         title: ISCE3 Documentation (software backing NISAR processor)
       - url: https://search.asf.alaska.edu/
         title: ASF Data Search (Vertex)
+    - title: Additional Resources for Beginners
+      children:
+      - url: https://docs.github.com/en/get-started/start-your-journey/git-and-github-learning-resources
+        title: Using GitHub
+      - url: https://www.edx.org/learn/data-analysis/university-of-alaska-fairbanks-synthetic-aperture-radar-foundations
+        title: SAR Foundations on edX
+      - url: https://radar.community.uaf.edu/
+        title: Learn SAR at UAF
+      - url: https://jupyterhub.readthedocs.io/en/stable/tutorial/quickstart.html
+        title: JupyterHub Tutorials         
     - title: Contribute to the NISAR Cookbook
       children:
       - file: CONTRIBUTING.md
       - file: notebooks/notebook-template.ipynb
-    
+
   # jupyter:
   #   binder:
   #     url: "https://mybinder.org"

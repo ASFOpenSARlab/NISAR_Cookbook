@@ -1,5 +1,7 @@
 import ipywidgets as widgets
 from ipyleaflet import Map, DrawControl, basemaps, WidgetControl, basemap_to_tiles, TileLayer, GeoJSON
+import shapely
+from shapely.geometry import shape
 
 def bbox_to_wkt(bounds):
     """
@@ -20,7 +22,7 @@ def bbox_to_wkt(bounds):
         "))"
     )
 
-def rectangular_aoi_select():
+def rectangular_aoi_select(aoi=None):
     """
     Generate a global map from which a user can select a rectangular area of interest.
 
@@ -48,6 +50,25 @@ def rectangular_aoi_select():
         description="WKT:",
         layout=widgets.Layout(width="500px", height="90px"),
     )
+
+    if aoi is not None:
+        geom = shapely.from_wkt(aoi) if isinstance(aoi, str) else shape(aoi)
+        west, south, east, north = geom.bounds
+        bbox = shapely.box(west, south, east, north)
+
+        m.add(GeoJSON(
+            data={"type": "Feature", "properties": {},
+                  "geometry": shapely.geometry.mapping(bbox)},
+            style={"color": "#00ffff", "weight": 2, "dashArray": "6 4", "fillOpacity": 0.05},
+            name="Input AOI bounding box",
+        ))
+        m.fit_bounds([[south, west], [north, east]])
+        wkt_box.value = (
+            "POLYGON(("
+            f"{west} {south}, {east} {south}, {east} {north}, "
+            f"{west} {north}, {west} {south}"
+            "))"
+        )
     
     draw_control = DrawControl(
         rectangle={

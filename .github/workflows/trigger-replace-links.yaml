@@ -10,7 +10,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Find and Replace Repository Name
         uses: jacobtomlinson/gha-find-replace@v3
         with:

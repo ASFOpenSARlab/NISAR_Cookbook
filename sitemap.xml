@@ -47,6 +47,9 @@
     <loc>http://pre.render/gslc-interferogram</loc>
   </url>
   <url>
+    <loc>http://pre.render/gslc-faraday-rotation-estimation</loc>
+  </url>
+  <url>
     <loc>http://pre.render/gslc-basic-polsartools</loc>
   </url>
   <url>

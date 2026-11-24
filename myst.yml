@@ -42,6 +42,7 @@ project:
     - title: GSLC
       children:
         - file: notebooks/GSLC_Interferogram.ipynb
+        - file: notebooks/GSLC_Faraday_Rotation_Estimation.ipynb
         - file: notebooks/GSLC_Basic_PolSARtools.ipynb
         - file: notebooks/GSLC_polSAR_vegetation.ipynb
     - title: GUNW
@@ -72,15 +73,6 @@ project:
       - file: CONTRIBUTING.md
       - file: notebooks/notebook-template.ipynb
 
-  # jupyter:
-  #   binder:
-  #     url: "https://mybinder.org"
-# execute:
-#   execute_notebooks: cache
-#   timeout: 1200
-#   allow_errors: True
-#   exclude_patterns:
-#     - "notebooks/NISAR_GCOV*"
 execute:
   execute_notebooks: "off"
 site:
